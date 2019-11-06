@@ -25,11 +25,11 @@ class _CategoryButtonState extends State<CategoryButton> {
             side: BorderSide(color: Colors.grey, width: 1),
             borderRadius: new BorderRadius.circular(20.0)),
         onPressed: () => widget.func,
-        color: widget.active ? CustomColors.red : Colors.grey[200],
+        color: widget.active ? CustomColors.yellow : Colors.grey[200],
         child: Text(
           "${widget.title}",
           style: TextStyle(
-            color: widget.active ? Colors.white : Colors.black,
+            color: widget.active ? Colors.black : Colors.black,
           ),
         ));
   }

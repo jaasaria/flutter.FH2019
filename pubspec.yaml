@@ -70,7 +70,11 @@ flutter:
     - assets/flare/
     - assets/images/
     - assets/images/banner/
-    - assets/images/items/
+    - assets/images/items/beef/
+    - assets/images/items/chicken/
+    - assets/images/items/pork/
+    - assets/images/items/seafood/
+    - assets/images/items/vegetables/
 
   fonts:
     - family: Raleway

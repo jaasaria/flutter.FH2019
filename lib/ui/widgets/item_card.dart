@@ -38,7 +38,7 @@ class _ItemCardState extends State<ItemCard> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
+                    topRight: Radius.circular(50),
                   ),
                   child: Image.asset(
                     "${widget.img}",
@@ -47,9 +47,9 @@ class _ItemCardState extends State<ItemCard> {
                 ),
               ),
               Positioned(
-                  top: -10.0,
+                  top: 5.0,
                   //   right: -10.0,
-                  right: 5,
+                  right: 0,
                   child: Container(
                     padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(

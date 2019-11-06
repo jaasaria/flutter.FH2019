@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "156309891534",
+    "firebase_url": "https://tei-mobile-app-flutter.firebaseio.com",
+    "project_id": "tei-mobile-app-flutter",
+    "storage_bucket": "tei-mobile-app-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156309891534:android:e62b6af579b68f19",
+        "android_client_info": {
+          "package_name": "com.jaasaria.tei"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156309891534-7s2030dolb558s43cr86fnuh8tsop2mo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jaasaria.tei",
+            "certificate_hash": "c385cdb4e0ee38ba6479d8a9692527f79eb9f36f"
+          }
+        },
+        {
+          "client_id": "156309891534-rqpbd1rutf6n6qagqe0phfbk2sn65unm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNbAlvbDPvHGLabAw3ar5Zj_MYIdmzXSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156309891534-rqpbd1rutf6n6qagqe0phfbk2sn65unm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

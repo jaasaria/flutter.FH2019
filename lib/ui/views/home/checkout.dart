@@ -26,7 +26,9 @@ class _CheckOutState extends State<CheckOut>
   @override
   void initState() {
     super.initState();
-    if (mounted) {}
+    if (mounted) {
+      // getCheckOutItems
+    }
   }
 
   @override
@@ -41,12 +43,15 @@ class _CheckOutState extends State<CheckOut>
           children: <Widget>[
             new CarouselBanner(),
             Expanded(
-                child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                return CheckOutCard();
-              },
-            )),
+              child: ListView.builder(
+                itemCount: itemViewModel.getCheckOutItems.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return CheckOutCard(
+                    item: itemViewModel.getCheckOutItems[index],
+                  );
+                },
+              ),
+            )
           ],
         ),
         bottomNavigationBar: Column(

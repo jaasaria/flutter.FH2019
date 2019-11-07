@@ -75,6 +75,7 @@ flutter:
     - assets/images/items/pork/
     - assets/images/items/seafood/
     - assets/images/items/vegetables/
+    - assets/images/items/desserts/
 
   fonts:
     - family: Raleway

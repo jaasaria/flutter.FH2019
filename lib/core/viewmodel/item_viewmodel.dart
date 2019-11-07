@@ -6,6 +6,8 @@ class ItemViewModel extends BaseModel {
   List<Item> _filterItems = Item.listServices;
 
   List<Item> get getAllItems => Item.listServices;
+  List<Item> get getCheckOutItems =>
+      Item.listServices.where((data) => data.addCart).toList();
   List<Item> get getFilterItems => _filterItems;
 
   filterItem(Category category) async {
@@ -21,6 +23,16 @@ class ItemViewModel extends BaseModel {
         });
       });
     }
+    notifyListeners();
+  }
+
+  deleteCartItem(Item item) async {
+    Item.listServices.where((data) {
+      if (data == item) {
+        return data.addCart = false;
+      }
+      return null;
+    });
     notifyListeners();
   }
 }

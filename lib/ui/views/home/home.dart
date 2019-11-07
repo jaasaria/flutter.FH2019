@@ -50,10 +50,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                 crossAxisCount: 2,
                 children: itemViewModel.getFilterItems.map((index) {
                   return ItemCard(
-                    img: index.image,
-                    title: index.name,
-                    category: index.category,
-                    price: index.price,
+                    item: index,
                   );
                 }).toList(),
               ),

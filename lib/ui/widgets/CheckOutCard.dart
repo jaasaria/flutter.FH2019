@@ -1,15 +1,38 @@
+import 'package:fh2019/core/models/item.dart';
+import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
+import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'IncrementalButton.dart';
 
-class CheckOutCard extends StatelessWidget {
-  const CheckOutCard({
+class CheckOutCard extends StatefulWidget {
+  Item item;
+
+  CheckOutCard({
+    @required this.item,
     Key key,
   }) : super(key: key);
 
   @override
+  _CheckOutCardState createState() => _CheckOutCardState();
+}
+
+class _CheckOutCardState extends State<CheckOutCard> {
+  deleteItem() {
+    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
+
+    setState(() {
+      itemViewModel.deleteCartItem(widget.item);
+      widget.item.addCart = false;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 3, left: 8, right: 8),
       child: Card(
@@ -25,7 +48,7 @@ class CheckOutCard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
@@ -35,7 +58,7 @@ class CheckOutCard extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.asset(
-                          "assets/images/items/vegetables/beef_stir_fry.jpg",
+                          "${widget.item.image}",
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -46,41 +69,51 @@ class CheckOutCard extends StatelessWidget {
                       height: 70,
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              Text(
-                                'Pinakbet',
-                                style: Theme.of(context).textTheme.body2,
-                              ),
-                              Text(
-                                'Vegetables',
-                                style: Theme.of(context).textTheme.caption,
-                              ),
-                              Text(
-                                '25.00',
-                                style: Theme.of(context).textTheme.subhead,
-                              ),
-                            ],
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                Container(
+                                  child: Text(
+                                    '${widget.item.name}',
+                                    style: Theme.of(context).textTheme.body2,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                  ),
+                                ),
+                                Text(
+                                  '${widget.item.price}',
+                                  style: Theme.of(context).textTheme.subhead,
+                                ),
+                              ],
+                            ),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              Text(
-                                '200.00',
-                                style: Theme.of(context).textTheme.title,
-                              ),
-                              Text(
-                                'Total',
-                                style: Theme.of(context).textTheme.caption,
-                              ),
-                            ],
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                Text(
+                                  '${widget.item.price}',
+                                  textAlign: TextAlign.right,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .title
+                                      .copyWith(color: CustomColors.red),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ),
+                                Text(
+                                  'Total',
+                                  style: Theme.of(context).textTheme.caption,
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),
@@ -106,7 +139,7 @@ class CheckOutCard extends StatelessWidget {
                           child: IconButton(
                             padding: EdgeInsets.only(bottom: 2),
                             color: Colors.white,
-                            onPressed: () {},
+                            onPressed: deleteItem,
                             icon: Icon(Icons.delete),
                           ),
                         ),

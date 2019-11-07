@@ -5,7 +5,7 @@ import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'IncrementalButton.dart';
+import 'incremental_button.dart';
 
 class CheckOutCard extends StatefulWidget {
   Item item;
@@ -98,7 +98,7 @@ class _CheckOutCardState extends State<CheckOutCard> {
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
                                 Text(
-                                  '${widget.item.price}',
+                                  '${widget.item.price * widget.item.orderQty}',
                                   textAlign: TextAlign.right,
                                   style: Theme.of(context)
                                       .textTheme
@@ -124,7 +124,7 @@ class _CheckOutCardState extends State<CheckOutCard> {
                 height: 30,
                 child: Stack(
                   children: <Widget>[
-                    IncrementalButton(),
+                    IncrementalButton(item: widget.item),
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
                       child: Container(

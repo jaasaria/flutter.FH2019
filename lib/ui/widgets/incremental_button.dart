@@ -1,10 +1,36 @@
+import 'package:fh2019/core/models/item.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
+import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class IncrementalButton extends StatelessWidget {
-  const IncrementalButton({
+class IncrementalButton extends StatefulWidget {
+  Item item;
+  IncrementalButton({
+    this.item,
     Key key,
   }) : super(key: key);
+
+  @override
+  _IncrementalButtonState createState() => _IncrementalButtonState();
+}
+
+class _IncrementalButtonState extends State<IncrementalButton> {
+  void increment() {
+    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
+    setState(() {
+      itemViewModel.incrementCartItemQty(widget.item);
+      widget.item.orderQty += 1;
+    });
+  }
+
+  void decrement() {
+    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
+    setState(() {
+      itemViewModel.incrementCartItemQty(widget.item);
+      widget.item.orderQty -= 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +45,8 @@ class IncrementalButton extends StatelessWidget {
                 padding: EdgeInsets.all(0),
                 shape: new ContinuousRectangleBorder(
                     borderRadius: new BorderRadius.circular(10.0)),
-                onPressed: () {},
+                onPressed: widget.item.orderQty <= 1 ? null : () => decrement(),
+                disabledColor: Colors.grey,
                 color: CustomColors.green,
                 child: Text(
                   "-",
@@ -35,7 +62,7 @@ class IncrementalButton extends StatelessWidget {
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey[300]),
                 borderRadius: BorderRadius.circular(5.0)),
-            child: Center(child: Text('1')),
+            child: Center(child: Text('${widget.item.orderQty}')),
           ),
           Container(
             width: 50,
@@ -43,7 +70,8 @@ class IncrementalButton extends StatelessWidget {
                 padding: EdgeInsets.all(0),
                 shape: new ContinuousRectangleBorder(
                     borderRadius: new BorderRadius.circular(10.0)),
-                onPressed: () {},
+                onPressed: () => increment(),
+                disabledColor: Colors.grey,
                 color: CustomColors.green,
                 child: Text(
                   "+",

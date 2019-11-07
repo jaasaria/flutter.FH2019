@@ -4,9 +4,10 @@ import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
 import 'package:fh2019/core/viewmodel/category_viewmodel.dart';
 import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
-import 'package:fh2019/ui/widgets/CarouselBanner.dart';
+import 'package:fh2019/ui/widgets/carousel_banner.dart';
 import 'package:fh2019/ui/widgets/category_button.dart';
 import 'package:fh2019/ui/widgets/footer_button.dart';
+import 'package:fh2019/ui/widgets/footer_summary.dart';
 import 'package:fh2019/ui/widgets/item_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -86,32 +87,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                           );
                         },
                       )),
-                  Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey[300]),
-                          borderRadius: BorderRadius.circular(5.0)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text('Summary',
-                              style: Theme.of(context).textTheme.caption),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                  '${itemViewModel.getCheckOutItems.length} Items',
-                                  style: Theme.of(context).textTheme.subhead),
-                              Text('Total 5313.53',
-                                  style: Theme.of(context).textTheme.subhead)
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  )
+                  new FooterSummary(itemViewModel: itemViewModel)
                 ],
               ),
             ),

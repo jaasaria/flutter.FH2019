@@ -18,7 +18,7 @@ class CarouselBanner extends StatelessWidget {
       enableInfiniteScroll: true,
       reverse: false,
       autoPlay: true,
-      autoPlayInterval: Duration(seconds: 10),
+      autoPlayInterval: Duration(seconds: 7),
       autoPlayAnimationDuration: Duration(milliseconds: 800),
       pauseAutoPlayOnTouch: Duration(seconds: 10),
       enlargeCenterPage: false,

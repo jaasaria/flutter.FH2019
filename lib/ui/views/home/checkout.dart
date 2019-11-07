@@ -4,6 +4,7 @@ import 'package:fh2019/core/shared/custom_media.dart';
 import 'package:fh2019/core/viewmodel/category_viewmodel.dart';
 import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:fh2019/ui/widgets/CarouselBanner.dart';
+import 'package:fh2019/ui/widgets/CheckOutCard.dart';
 import 'package:fh2019/ui/widgets/IncrementalButton.dart';
 import 'package:fh2019/ui/widgets/category_button.dart';
 import 'package:fh2019/ui/widgets/footer_button.dart';
@@ -40,117 +41,12 @@ class _CheckOutState extends State<CheckOut>
           children: <Widget>[
             new CarouselBanner(),
             Expanded(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      elevation: 10,
-                      child: Container(
-                        width: CustomMedia.screenWidth,
-                        height: CustomMedia.screenHeight * .13,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Container(
-                                  height: CustomMedia.screenHeight * .15,
-                                  width: MediaQuery.of(context).size.width,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      topRight: Radius.circular(50),
-                                    ),
-                                    child: Image.asset(
-                                      "assets/images/items/vegetables/beef_stir_fry.jpg",
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  width: CustomMedia.screenWidth * .20,
-                                  height: 50,
-                                  child: Image.asset(
-                                    "assets/images/items/vegetables/beef_stir_fry.jpg",
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Container(
-                                  color: Colors.pink,
-                                  width: CustomMedia.screenWidth * .70,
-                                  height: 50,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: <Widget>[
-                                          Text(
-                                            'Pinakbet',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .body2,
-                                          ),
-                                          Text(
-                                            'Vegetables',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .caption,
-                                          ),
-                                          Text(
-                                            '25.00',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .subhead,
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: <Widget>[
-                                          Text(
-                                            '200.00',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .title,
-                                          ),
-                                          Text(
-                                            'Total',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .caption,
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            IncrementalButton()
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                return CheckOutCard();
+              },
+            )),
           ],
         ),
         bottomNavigationBar: Column(

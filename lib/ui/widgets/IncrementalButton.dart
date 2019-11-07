@@ -10,6 +10,8 @@ class IncrementalButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Container(
             width: 50,
@@ -18,7 +20,7 @@ class IncrementalButton extends StatelessWidget {
                 shape: new ContinuousRectangleBorder(
                     borderRadius: new BorderRadius.circular(10.0)),
                 onPressed: () {},
-                color: CustomColors.red,
+                color: CustomColors.green,
                 child: Text(
                   "-",
                   style: Theme.of(context)
@@ -42,7 +44,7 @@ class IncrementalButton extends StatelessWidget {
                 shape: new ContinuousRectangleBorder(
                     borderRadius: new BorderRadius.circular(10.0)),
                 onPressed: () {},
-                color: CustomColors.red,
+                color: CustomColors.green,
                 child: Text(
                   "+",
                   style: Theme.of(context)

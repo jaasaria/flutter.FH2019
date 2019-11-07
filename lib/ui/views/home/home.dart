@@ -2,6 +2,8 @@ import 'package:fh2019/core/models/category.dart';
 import 'package:fh2019/core/models/item.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
+import 'package:fh2019/core/viewmodel/category_viewmodel.dart';
+import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:fh2019/ui/widgets/category_button.dart';
 import 'package:fh2019/ui/widgets/footer_button.dart';
 import 'package:fh2019/core/shared/custom_assets.dart';
@@ -9,6 +11,9 @@ import 'package:fh2019/ui/widgets/item_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:provider/provider.dart';
+
+import '../../../locator.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -19,11 +24,49 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   @override
   bool get wantKeepAlive => true;
 
+//   Category _selectedCategory = Category.listCategory[1];
+
+//   CategoryViewModel categoryViewModel = locator<CategoryViewModel>();
+
+  @override
+  void initState() {
+    super.initState();
+    // setCategory();
+
+    if (mounted) {
+      //   _initCategory();
+    }
+  }
+
+//   void setCategory(Category category) {
+//     setState(() {
+//       _selectedCategory = category;
+//     });
+//   }
+
+  test() {
+    print('fsa');
+  }
+
+  _initCategory() async {
+    final CategoryViewModel categoryViewModel =
+        Provider.of<CategoryViewModel>(context);
+
+    // categoryViewModel.setSelectedCategory();
+
+    categoryViewModel.setSelectedCategory(Category.listCategory[2]);
+  }
+
   @override
   Widget build(BuildContext context) {
     // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
     //   statusBarColor: Colors.white,
     // ));
+
+    final CategoryViewModel categoryViewModel =
+        Provider.of<CategoryViewModel>(context);
+
+    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
 
     return Scaffold(
         body: Column(
@@ -63,7 +106,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                     const EdgeInsets.symmetric(horizontal: 8).copyWith(top: 20),
                 crossAxisSpacing: 10,
                 crossAxisCount: 2,
-                children: Item.listServices.map((index) {
+                children: itemViewModel.getFilterItems.map((index) {
                   return ItemCard(
                     img: index.image,
                     title: index.name,
@@ -94,14 +137,17 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                           return Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: CategoryButton(
-                                active: index == 0 ? true : false,
+                                active: categoryViewModel.getSelectedCategory ==
+                                        Category.listCategory[index]
+                                    ? true
+                                    : false,
                                 title: Category.listCategory[index].name,
-                                func: getCategory),
+                                func: () =>
+                                    setCategory(Category.listCategory[index])),
                           );
                         },
                       )),
                   Padding(
-                    // padding: const EdgeInsets.symmetric(horizontal: 10),
                     padding: const EdgeInsets.all(5),
                     child: Container(
                       padding: EdgeInsets.all(10),
@@ -161,6 +207,16 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
         ));
   }
 
-  getCategory() {}
+  setCategory(Category category) {
+    final CategoryViewModel categoryViewModel =
+        Provider.of<CategoryViewModel>(context);
+
+    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
+
+    categoryViewModel.setSelectedCategory(category);
+
+    itemViewModel.filterItem(category);
+  }
+
   proceed() {}
 }

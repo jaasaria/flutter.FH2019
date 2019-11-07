@@ -7,6 +7,7 @@ class CustomAssets {
     "assets/images/banner/banner2.jpg",
     "assets/images/banner/banner3.jpg",
     "assets/images/banner/banner4.jpg",
-    "assets/images/banner/banner5.jpg"
+    "assets/images/banner/banner5.jpg",
+    "assets/images/banner/banner6.jpg"
   ];
 }

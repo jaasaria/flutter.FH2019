@@ -9,10 +9,11 @@ class CustomColors {
   static final Color secondaryColorLight = ColorHex("#ff8e33");
   static final Color thirdColorLight = ColorHex("#ff8e33");
 
-  static final Color red = ColorHex("#c21717");
+  static final Color red = ColorHex("#BC0D00");
   static final Color blue = ColorHex("#1441a6");
   static final Color lightblue = ColorHex("#2a8fe4");
-  static final Color yellow = ColorHex("#fdd216");
+  static final Color yellow = ColorHex("#F8BA3E");
+//   static final Color yellow = ColorHex("#fdd216");
 }
 
 // You may used: 0xff + hexa

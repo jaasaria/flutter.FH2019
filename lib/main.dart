@@ -8,6 +8,8 @@ import 'core/config/route.dart';
 import 'core/config/routes.dart';
 import 'core/config/app.dart';
 
+import 'core/viewmodel/category_viewmodel.dart';
+import 'core/viewmodel/item_viewmodel.dart';
 import 'core/viewmodel/theme_provider.dart';
 import 'layout.dart';
 import 'locator.dart';
@@ -33,6 +35,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(builder: (_) => ThemeProvider()),
+        ChangeNotifierProvider(builder: (_) => CategoryViewModel()),
+        ChangeNotifierProvider(builder: (_) => ItemViewModel()),
       ],
       child: new MaterialAppTheme(),
     );

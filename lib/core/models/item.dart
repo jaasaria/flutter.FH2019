@@ -18,10 +18,12 @@ class Item {
 
   // Dummy Data
   static List<Item> listServices = [
-    //   Chicken
     Item(
         name: "Chicken Adobo",
-        category: <Category>[Category.listCategory[3]],
+        category: <Category>[
+          Category.listCategory[3],
+          Category.listCategory[7]
+        ],
         emotion: Emotion.SAD,
         image: 'assets/images/items/chicken/easy_chicken_adobo.jpg',
         price: '50.00'),
@@ -36,7 +38,10 @@ class Item {
     // PORK
     Item(
         name: "Pork Adobo",
-        category: <Category>[Category.listCategory[4]],
+        category: <Category>[
+          Category.listCategory[4],
+          Category.listCategory[7]
+        ],
         emotion: Emotion.SAD,
         image: 'assets/images/items/pork/pork_adobo.jpg',
         price: '50.00'),
@@ -48,7 +53,10 @@ class Item {
         price: '75.00'),
     Item(
         name: "Liempo Inihaw",
-        category: <Category>[Category.listCategory[4]],
+        category: <Category>[
+          Category.listCategory[4],
+          Category.listCategory[7]
+        ],
         emotion: Emotion.SAD,
         image: 'assets/images/items/pork/Easy_Liempo_Inihaw.jpg',
         price: '60.00'),
@@ -71,7 +79,10 @@ class Item {
         price: '80.00'),
     Item(
         name: "Danggit Silog",
-        category: <Category>[Category.listCategory[2]],
+        category: <Category>[
+          Category.listCategory[2],
+          Category.listCategory[7]
+        ],
         emotion: Emotion.SAD,
         image: 'assets/images/items/seafood/Danggit_Sinangag.jpg',
         price: '60.00'),
@@ -85,7 +96,10 @@ class Item {
         price: '65.00'),
     Item(
         name: "Corned Beef Silog",
-        category: <Category>[Category.listCategory[5]],
+        category: <Category>[
+          Category.listCategory[5],
+          Category.listCategory[7]
+        ],
         emotion: Emotion.SAD,
         image: 'assets/images/items/beef/Breakfast_Corned_Beef_Silog.jpg',
         price: '60.00'),

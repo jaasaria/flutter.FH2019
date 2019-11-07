@@ -1,3 +1,5 @@
-# Tarlac Electric Incorporated
+# Flutter Hackathon 2019
 
-## Getting Started
+## Food Ordering in a Fun Way (Facial Recognition)
+
+Credits:

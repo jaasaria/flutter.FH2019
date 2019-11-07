@@ -25,7 +25,6 @@ class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: MediaQuery.of(context).size.width / 2 ,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -48,7 +47,6 @@ class _ItemCardState extends State<ItemCard> {
               ),
               Positioned(
                   top: 5.0,
-                  //   right: -10.0,
                   right: 0,
                   child: Container(
                     padding: EdgeInsets.all(5),
@@ -63,31 +61,6 @@ class _ItemCardState extends State<ItemCard> {
                           .copyWith(color: Colors.white),
                     ),
                   )),
-              //   Positioned.fill(
-              //     child: Align(
-              //       alignment: Alignment.bottomRight,
-              //       child: Row(
-              //         children: widget.category.map((index) {
-              //           return Padding(
-              //               padding: const EdgeInsets.only(right: 5),
-              //               child: Container(
-              //                 padding: EdgeInsets.symmetric(horizontal: 10),
-              //                 decoration: BoxDecoration(
-              //                     color: Color.fromRGBO(38, 38, 38, 0.6),
-              //                     borderRadius: BorderRadius.circular(50.0)),
-              //                 child: Text(
-              //                   "${index.name}",
-              //                   style: Theme.of(context)
-              //                       .textTheme
-              //                       .caption
-              //                       .copyWith(color: Colors.white70),
-              //                   overflow: TextOverflow.ellipsis,
-              //                 ),
-              //               ));
-              //         }).toList(),
-              //       ),
-              //     ),
-              //   ),
               Positioned(
                 bottom: 5.0,
                 // left: 10.0,
@@ -140,40 +113,6 @@ class _ItemCardState extends State<ItemCard> {
                       maxLines: 2,
                     ),
                   ),
-
-                  //   Expanded(
-                  //     child: Text(
-                  //       "${widget.title}",
-                  //       style: Theme.of(context).textTheme.body2,
-                  //       textAlign: TextAlign.center,
-                  //       overflow: TextOverflow.ellipsis,
-                  //       maxLines: 2,
-                  //     ),
-                  //   ),
-                  //   Expanded(
-                  //       flex: 1,
-                  //       child: Row(
-                  //         children: widget.category.map((index) {
-                  //           return Padding(
-                  //               padding: const EdgeInsets.only(right: 5),
-                  //               child: Container(
-                  //                 padding:
-                  //                     EdgeInsets.symmetric(horizontal: 10),
-                  //                 decoration: BoxDecoration(
-                  //                     color: Colors.grey[400],
-                  //                     borderRadius:
-                  //                         BorderRadius.circular(50.0)),
-                  //                 child: Text(
-                  //                   "${index.name}",
-                  //                   style: Theme.of(context)
-                  //                       .textTheme
-                  //                       .caption
-                  //                       .copyWith(color: Colors.white),
-                  //                   overflow: TextOverflow.ellipsis,
-                  //                 ),
-                  //               ));
-                  //         }).toList(),
-                  //       )),
                 ],
               ),
             ),

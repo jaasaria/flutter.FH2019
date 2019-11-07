@@ -18,6 +18,5 @@ class Category {
     Category(name: "Beef", image: ''), //5
     Category(name: "Desserts", image: ''), //6
     Category(name: "Best Seller", image: ''), //7
-    Category(name: "Appetizer", image: ''), //8
   ];
 }

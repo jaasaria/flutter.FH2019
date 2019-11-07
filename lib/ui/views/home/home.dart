@@ -1,19 +1,16 @@
+import 'package:fh2019/core/config/routes.dart';
 import 'package:fh2019/core/models/category.dart';
-import 'package:fh2019/core/models/item.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
 import 'package:fh2019/core/viewmodel/category_viewmodel.dart';
 import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
+import 'package:fh2019/ui/widgets/CarouselBanner.dart';
 import 'package:fh2019/ui/widgets/category_button.dart';
 import 'package:fh2019/ui/widgets/footer_button.dart';
-import 'package:fh2019/core/shared/custom_assets.dart';
 import 'package:fh2019/ui/widgets/item_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
-
-import '../../../locator.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -24,37 +21,10 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   @override
   bool get wantKeepAlive => true;
 
-//   Category _selectedCategory = Category.listCategory[1];
-
-//   CategoryViewModel categoryViewModel = locator<CategoryViewModel>();
-
   @override
   void initState() {
     super.initState();
-    // setCategory();
-
-    if (mounted) {
-      //   _initCategory();
-    }
-  }
-
-//   void setCategory(Category category) {
-//     setState(() {
-//       _selectedCategory = category;
-//     });
-//   }
-
-  test() {
-    print('fsa');
-  }
-
-  _initCategory() async {
-    final CategoryViewModel categoryViewModel =
-        Provider.of<CategoryViewModel>(context);
-
-    // categoryViewModel.setSelectedCategory();
-
-    categoryViewModel.setSelectedCategory(Category.listCategory[2]);
+    if (mounted) {}
   }
 
   @override
@@ -71,35 +41,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
     return Scaffold(
         body: Column(
           children: <Widget>[
-            CarouselSlider(
-              height: 130,
-              // aspectRatio: 16 / 9,
-              aspectRatio: MediaQuery.of(context).size.aspectRatio,
-              viewportFraction: 1.0,
-              initialPage: 0,
-              enableInfiniteScroll: true,
-              reverse: false,
-              autoPlay: true,
-              autoPlayInterval: Duration(seconds: 10),
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
-              pauseAutoPlayOnTouch: Duration(seconds: 10),
-              enlargeCenterPage: false,
-              scrollDirection: Axis.horizontal,
-              items: CustomAssets.banner.map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      child: Image.asset(
-                        i,
-                        fit: BoxFit.cover,
-                        width: 1000.0,
-                      ),
-                    );
-                  },
-                );
-              }).toList(),
-            ),
+            CarouselBanner(),
             Expanded(
               child: GridView.count(
                 padding:
@@ -185,9 +127,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                 children: <Widget>[
                   Expanded(
                     child: new FooterButton(
-                      title: "Cancel",
+                      title: "Back",
                       color: CustomColors.red,
-                      func: proceed,
+                      func: cancelOrder,
                     ),
                   ),
                   SizedBox(
@@ -196,8 +138,8 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                   Expanded(
                     child: new FooterButton(
                       color: CustomColors.blue,
-                      title: "Proceed",
-                      func: proceed,
+                      title: "View Order",
+                      func: () => viewOrder(),
                     ),
                   ),
                 ],
@@ -210,13 +152,18 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   setCategory(Category category) {
     final CategoryViewModel categoryViewModel =
         Provider.of<CategoryViewModel>(context);
-
     final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
 
     categoryViewModel.setSelectedCategory(category);
-
     itemViewModel.filterItem(category);
   }
 
-  proceed() {}
+  void viewOrder() {
+    print('view order');
+    Navigator.of(context).pushNamed(Routes.checkout);
+  }
+
+  cancelOrder() {
+    // Navigator.of(context).pushNamed(Routes.checkout);
+  }
 }

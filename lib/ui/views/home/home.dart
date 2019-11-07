@@ -101,9 +101,10 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Text('4 Items',
+                              Text(
+                                  '${itemViewModel.getCheckOutItems.length} Items',
                                   style: Theme.of(context).textTheme.subhead),
-                              Text('Total 533.53',
+                              Text('Total 5313.53',
                                   style: Theme.of(context).textTheme.subhead)
                             ],
                           )

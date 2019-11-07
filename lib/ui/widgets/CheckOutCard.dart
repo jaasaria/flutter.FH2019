@@ -22,7 +22,6 @@ class CheckOutCard extends StatefulWidget {
 class _CheckOutCardState extends State<CheckOutCard> {
   deleteItem() {
     final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
-
     setState(() {
       itemViewModel.deleteCartItem(widget.item);
       widget.item.addCart = false;

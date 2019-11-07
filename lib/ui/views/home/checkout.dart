@@ -79,7 +79,8 @@ class _CheckOutState extends State<CheckOut>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Text('4 Items',
+                              Text(
+                                  '${itemViewModel.getCheckOutItems.length} Items',
                                   style: Theme.of(context).textTheme.subhead),
                               Text('Total 533.53',
                                   style: Theme.of(context).textTheme.subhead)

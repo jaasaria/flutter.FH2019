@@ -35,4 +35,14 @@ class ItemViewModel extends BaseModel {
     });
     notifyListeners();
   }
+
+  updateCartItem(Item item, bool status) async {
+    Item.listServices.where((data) {
+      if (data == item) {
+        return data.addCart = status;
+      }
+      return null;
+    });
+    notifyListeners();
+  }
 }

@@ -1,7 +1,9 @@
 import 'package:fh2019/core/models/item.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
+import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ItemCard extends StatefulWidget {
   final Item item;
@@ -16,7 +18,9 @@ class ItemCard extends StatefulWidget {
 
 class _ItemCardState extends State<ItemCard> {
   updateAddCartStatus(bool status) {
+    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
     setState(() {
+      itemViewModel.updateCartItem(widget.item, status);
       widget.item.addCart = status;
     });
   }

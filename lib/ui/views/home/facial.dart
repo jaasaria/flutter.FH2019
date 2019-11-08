@@ -126,8 +126,8 @@ class _FacialState extends State<Facial>
     await itemViewModel.resetCartItemOrder();
     await itemViewModel.filterItem(Category.listCategory[0]);
 
-    Emotion emo = Emotion.SAD;
-    // Emotion emo = Emotion.HAPPY;
+    // Emotion emo = Emotion.SAD;
+    Emotion emo = Emotion.HAPPY;
     await itemViewModel.getFacialOrder(emo);
     // Navigator.of(context).pushNamed(Routes.facialorder, emotion: emo);
 

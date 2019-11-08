@@ -4,6 +4,7 @@ import 'package:fh2019/core/shared/custom_media.dart';
 import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ItemCard extends StatefulWidget {
   final Item item;
@@ -66,15 +67,20 @@ class _ItemCardState extends State<ItemCard>
                   height: CustomMedia.screenHeight * .15,
                   width: MediaQuery.of(context).size.width,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(50),
-                    ),
-                    child: Image.asset(
-                      "${widget.item.image}",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(50),
+                      ),
+                      child: FadeInImage(
+                        placeholder: MemoryImage(kTransparentImage),
+                        image: AssetImage("${widget.item.image}"),
+                        fit: BoxFit.cover,
+                      )
+                      // Image.asset(
+                      //   "${widget.item.image}",
+                      //   fit: BoxFit.cover,
+                      // ),
+                      ),
                 ),
                 widget.item.addCart
                     ? Container(

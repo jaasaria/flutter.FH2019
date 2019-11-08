@@ -1,5 +1,6 @@
 import 'package:fh2019/ui/views/home/checkout.dart';
 import 'package:fh2019/ui/views/home/end.dart';
+import 'package:fh2019/ui/views/home/facial_order.dart';
 import 'package:fh2019/ui/views/home/home.dart';
 import 'package:fh2019/ui/views/home/image_capture_page.dart';
 import 'package:fh2019/ui/views/home/play.dart';
@@ -75,6 +76,7 @@ class _MaterialAppThemeState extends State<MaterialAppTheme> {
         Routes.facial: (context) => Facial(),
         Routes.end: (context) => End(),
         Routes.facialcapture: (context) => ImageCapturePage(),
+        Routes.facialorder: (context) => FacialOrder(),
       },
     );
   }

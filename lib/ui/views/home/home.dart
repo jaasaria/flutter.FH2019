@@ -133,7 +133,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   }
 
   void viewOrder() {
-    print('view order');
     Navigator.of(context).pushNamed(Routes.checkout);
   }
 

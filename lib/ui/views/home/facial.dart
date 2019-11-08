@@ -5,6 +5,7 @@ import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
 import 'package:fh2019/core/viewmodel/category_viewmodel.dart';
 import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
+import 'package:fh2019/ui/views/home/facial_order.dart';
 import 'package:fh2019/ui/widgets/carousel_banner.dart';
 import 'package:fh2019/ui/widgets/category_button.dart';
 import 'package:fh2019/ui/widgets/footer_button.dart';
@@ -106,7 +107,7 @@ class _FacialState extends State<Facial>
                     child: new FooterButton(
                       color: CustomColors.blue,
                       title: "Next",
-                      func: () => takePicture(),
+                      func: () => getFacialOrder(),
                     ),
                   ),
                 ],
@@ -128,7 +129,13 @@ class _FacialState extends State<Facial>
     Emotion emo = Emotion.SAD;
     // Emotion emo = Emotion.HAPPY;
     await itemViewModel.getFacialOrder(emo);
-    Navigator.of(context).pushNamed(Routes.checkout);
+    // Navigator.of(context).pushNamed(Routes.facialorder, emotion: emo);
+
+    Navigator.pushNamed(
+      context,
+      Routes.facialorder,
+      arguments: FacialOrder(emotion: emo),
+    );
   }
 
   cancelOrder() {

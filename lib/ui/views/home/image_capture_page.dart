@@ -64,7 +64,6 @@ class _ImageCapturePageState extends State<ImageCapturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      appBar: AppBar(),
       body: Column(
         children: <Widget>[
           Expanded(
@@ -151,7 +150,7 @@ class _ImageCapturePageState extends State<ImageCapturePage> {
                           padding: const EdgeInsets.only(left: 10.0),
                           child: new FooterButton(
                             color: CustomColors.green,
-                            title: "Proceed",
+                            title: "Next",
                             func: () {
                               Navigator.pop(context, _emotion);
                             },

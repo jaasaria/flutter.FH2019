@@ -20,6 +20,7 @@ class FooterButton extends StatelessWidget {
       shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(8.0)),
       onPressed: func,
+      disabledColor: Colors.grey,
       color: color,
       child: Text(
         "${title.toString()}",

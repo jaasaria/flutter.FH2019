@@ -1,6 +1,8 @@
 import 'package:fh2019/core/config/routes.dart';
+import 'package:fh2019/core/models/category.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
+import 'package:fh2019/core/viewmodel/category_viewmodel.dart';
 import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:fh2019/ui/widgets/carousel_banner.dart';
 import 'package:fh2019/ui/widgets/checkout_card.dart';
@@ -35,6 +37,7 @@ class _CheckOutState extends State<CheckOut>
   @override
   Widget build(BuildContext context) {
     final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
+    pr = new ProgressDialog(context);
 
     return Scaffold(
         body: Column(
@@ -88,9 +91,11 @@ class _CheckOutState extends State<CheckOut>
                     child: new FooterButton(
                       color: CustomColors.blue,
                       title: "Proceed to Checkout",
-                      func: () => proceedCheckOut(),
+                      func: itemViewModel.getCheckOutItems.length >= 1
+                          ? () => proceedCheckOut()
+                          : null,
                     ),
-                  ),
+                  )
                 ],
               ),
             )
@@ -107,12 +112,16 @@ class _CheckOutState extends State<CheckOut>
 
     await Future.delayed(Duration(seconds: 1));
 
+    final CategoryViewModel categoryViewModel =
+        Provider.of<CategoryViewModel>(context);
+    categoryViewModel.setSelectedCategory(Category.listCategory[0]);
+
     final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
     await itemViewModel.resetCartItemOrder();
+    await itemViewModel.filterItem(Category.listCategory[0]);
 
     pr.hide();
-
-    // add indicator here
-    Navigator.of(context).pushNamed(Routes.end);
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil(Routes.end, (Route<dynamic> route) => false);
   }
 }

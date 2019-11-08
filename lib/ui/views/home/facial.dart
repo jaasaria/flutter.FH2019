@@ -64,8 +64,8 @@ class _FacialState extends State<Facial>
                   Expanded(
                     child: new FooterButton(
                       color: CustomColors.blue,
-                      title: "Generate Item",
-                      func: () => viewOrder(),
+                      title: "Take Picture",
+                      func: () => takePicture(),
                     ),
                   ),
                 ],
@@ -75,7 +75,7 @@ class _FacialState extends State<Facial>
         ));
   }
 
-  void viewOrder() {
+  void takePicture() {
     // print('view order');
     // Navigator.of(context).pushNamed(Routes.checkout);
   }

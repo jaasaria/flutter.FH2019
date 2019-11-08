@@ -98,19 +98,7 @@ class _ItemCardState extends State<ItemCard>
                             return Transform.rotate(
                                 angle: rotateAnimation.value, child: child);
                           },
-                        )
-
-                        // AnimatedIcon(
-                        //   icon: AnimatedIcons.,
-                        //   progress: _controller,
-                        // )
-
-                        // Icon(
-                        //   Icons.check,
-                        //   size: 50,
-                        //   color: Colors.white,
-                        // ),
-                        )
+                        ))
                     : Container(),
                 Positioned(
                     top: 5.0,

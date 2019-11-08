@@ -35,7 +35,7 @@ dependencies:
   shared_preferences: ^0.5.3+4
   dio:
   flushbar: ^1.8.2
-  progress_dialog: ^1.1.0+1
+  progress_dialog: ^1.2.0
   flutter_svg: ^0.14.0
   basic_utils: ^1.8.2
   modal_progress_hud: ^0.1.3

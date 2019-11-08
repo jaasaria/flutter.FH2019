@@ -1,5 +1,6 @@
 import 'package:fh2019/core/config/routes.dart';
 import 'package:fh2019/core/models/category.dart';
+import 'package:fh2019/core/models/item.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
 import 'package:fh2019/core/viewmodel/category_viewmodel.dart';
@@ -37,7 +38,47 @@ class _FacialState extends State<Facial>
         body: Column(
           children: <Widget>[
             CarouselBanner(),
-            Expanded(child: Container()),
+            Expanded(
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    height: CustomMedia.screenHeight * .15,
+                    width: MediaQuery.of(context).size.width,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(50),
+                      ),
+                      child: Image.asset(
+                        "assets/images/items/others/selfie.jpg",
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Take a selfie",
+                    style: Theme.of(context).textTheme.headline.copyWith(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  Text(
+                    "Order meal base on your Facial Expression. Make sure you have internet to process image.",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.body1.copyWith(
+                          color: Colors.black,
+                        ),
+                  )
+                ],
+              ),
+            )),
           ],
         ),
         bottomNavigationBar: Column(
@@ -64,7 +105,7 @@ class _FacialState extends State<Facial>
                   Expanded(
                     child: new FooterButton(
                       color: CustomColors.blue,
-                      title: "Take Picture",
+                      title: "Next",
                       func: () => takePicture(),
                     ),
                   ),
@@ -76,8 +117,18 @@ class _FacialState extends State<Facial>
   }
 
   void takePicture() {
-    // print('view order');
-    // Navigator.of(context).pushNamed(Routes.checkout);
+    Navigator.of(context).pushNamed(Routes.facialcapture);
+  }
+
+  void getFacialOrder() async {
+    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
+    await itemViewModel.resetCartItemOrder();
+    await itemViewModel.filterItem(Category.listCategory[0]);
+
+    Emotion emo = Emotion.SAD;
+    // Emotion emo = Emotion.HAPPY;
+    await itemViewModel.getFacialOrder(emo);
+    Navigator.of(context).pushNamed(Routes.checkout);
   }
 
   cancelOrder() {

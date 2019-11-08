@@ -97,4 +97,14 @@ class ItemViewModel extends BaseModel {
     });
     notifyListeners();
   }
+
+  getFacialOrder(Emotion emo) async {
+    Item.listServices.forEach((data) {
+      if (data.emotion == emo) {
+        data.addCart = true;
+        data.orderQty = 1;
+      }
+    });
+    notifyListeners();
+  }
 }

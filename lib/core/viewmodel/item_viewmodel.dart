@@ -89,4 +89,12 @@ class ItemViewModel extends BaseModel {
     });
     notifyListeners();
   }
+
+  resetCartItemOrder() async {
+    Item.listServices.forEach((data) {
+      data.addCart = false;
+      data.orderQty = 1;
+    });
+    notifyListeners();
+  }
 }

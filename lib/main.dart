@@ -1,6 +1,9 @@
-import 'dart:convert';
-
 import 'package:fh2019/ui/views/home/checkout.dart';
+import 'package:fh2019/ui/views/home/end.dart';
+import 'package:fh2019/ui/views/home/home.dart';
+import 'package:fh2019/ui/views/home/play.dart';
+import 'package:fh2019/ui/views/home/start.dart';
+import 'package:fh2019/ui/views/home/facial.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -64,7 +67,12 @@ class _MaterialAppThemeState extends State<MaterialAppTheme> {
       home: Layout(),
       routes: <String, WidgetBuilder>{
         Routes.layout: (context) => Layout(),
+        Routes.home: (context) => Home(),
         Routes.checkout: (context) => CheckOut(),
+        Routes.play: (context) => Play(),
+        Routes.start: (context) => Start(),
+        Routes.facial: (context) => Facial(),
+        Routes.end: (context) => End(),
       },
     );
   }

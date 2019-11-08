@@ -138,6 +138,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   }
 
   cancelOrder() {
-    // Navigator.of(context).pushNamed(Routes.checkout);
+    Navigator.of(context).pop();
   }
 }

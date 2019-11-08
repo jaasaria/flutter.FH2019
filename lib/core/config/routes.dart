@@ -4,4 +4,9 @@ class Routes {
   static final String home = 'home';
 
   static final String checkout = 'checkout';
+  static final String play = 'play';
+  static final String start = 'start';
+
+  static final String facial = 'facial';
+  static final String end = 'end';
 }

@@ -1,6 +1,6 @@
+import 'package:fh2019/core/config/routes.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
-import 'package:fh2019/core/viewmodel/category_viewmodel.dart';
 import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:fh2019/ui/widgets/carousel_banner.dart';
 import 'package:fh2019/ui/widgets/checkout_card.dart';
@@ -8,7 +8,9 @@ import 'package:fh2019/ui/widgets/footer_button.dart';
 import 'package:fh2019/ui/widgets/footer_summary.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import 'package:provider/provider.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 class CheckOut extends StatefulWidget {
   CheckOut({Key key}) : super(key: key);
@@ -19,6 +21,8 @@ class _CheckOutState extends State<CheckOut>
     with AutomaticKeepAliveClientMixin<CheckOut> {
   @override
   bool get wantKeepAlive => true;
+
+  ProgressDialog pr;
 
   @override
   void initState() {
@@ -98,7 +102,17 @@ class _CheckOutState extends State<CheckOut>
     Navigator.of(context).pop();
   }
 
-  proceedCheckOut() {
-    Navigator.of(context).pop();
+  proceedCheckOut() async {
+    pr.show();
+
+    await Future.delayed(Duration(seconds: 1));
+
+    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
+    await itemViewModel.resetCartItemOrder();
+
+    pr.hide();
+
+    // add indicator here
+    Navigator.of(context).pushNamed(Routes.end);
   }
 }

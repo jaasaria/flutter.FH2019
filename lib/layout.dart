@@ -1,3 +1,5 @@
+import 'package:fh2019/ui/views/home/play.dart';
+import 'package:fh2019/ui/views/home/start.dart';
 import 'package:flutter/material.dart';
 import 'package:fh2019/ui/views/home/home.dart';
 import 'package:toast/toast.dart';
@@ -30,7 +32,7 @@ class _LayoutState extends State<Layout> {
       onWillPop: _onWillPop,
       child: Scaffold(
         key: scaffoldKey,
-        body: Home(),
+        body: Start(),
       ),
     );
   }

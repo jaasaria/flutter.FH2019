@@ -16,17 +16,41 @@ class ItemCard extends StatefulWidget {
   _ItemCardState createState() => _ItemCardState();
 }
 
-class _ItemCardState extends State<ItemCard> {
+class _ItemCardState extends State<ItemCard>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+//   bool animateCheckBool = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+
+    widget.item.addCart ? _controller.reverse() : _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
   updateAddCartStatus(bool status) {
     final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
     setState(() {
       itemViewModel.updateCartItem(widget.item, status);
       widget.item.addCart = status;
+      status ? _controller.reverse() : _controller.forward();
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final rotateAnimation =
+        Tween<double>(begin: 0, end: -3).animate(_controller);
+
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,12 +87,30 @@ class _ItemCardState extends State<ItemCard> {
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(50),
                             )),
-                        child: Icon(
-                          Icons.check,
-                          size: 50,
-                          color: Colors.white,
-                        ),
-                      )
+                        child: AnimatedBuilder(
+                          animation: rotateAnimation,
+                          child: Icon(
+                            Icons.check,
+                            size: 50,
+                            color: Colors.white,
+                          ),
+                          builder: (context, child) {
+                            return Transform.rotate(
+                                angle: rotateAnimation.value, child: child);
+                          },
+                        )
+
+                        // AnimatedIcon(
+                        //   icon: AnimatedIcons.,
+                        //   progress: _controller,
+                        // )
+
+                        // Icon(
+                        //   Icons.check,
+                        //   size: 50,
+                        //   color: Colors.white,
+                        // ),
+                        )
                     : Container(),
                 Positioned(
                     top: 5.0,

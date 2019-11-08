@@ -12,6 +12,7 @@ import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_text_styles.dart';
 
 import 'package:fh2019/ui/widgets/footer_button.dart';
+import 'package:provider/provider.dart';
 
 import 'face_painter.dart';
 import 'facial_order.dart';
@@ -158,7 +159,7 @@ class _ImageCapturePageState extends State<ImageCapturePage> {
                             func: () {
                               // Very Important
                               // Use this function to get the list of items by emotion.
-                              getFacialOrder(Emotion.HAPPY);
+                              getFacialOrder(_emotion);
 
                               //   Navigator.pop(context, _emotion);
                             },

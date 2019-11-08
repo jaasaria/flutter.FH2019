@@ -21,18 +21,14 @@ If happen you 💖 my project please dont forget to give me a ⭐. Show your lov
 
 
 #### Todo: More Samples
-- [ ] Facial Recognition (Error)
+- [ ] Facial Recognition (Unfinish)
 - [ ] More Animation 
     - Listview
     - Button
     - Images
 
-#### Event Info
-<kbd><img src="https://github.com/jaasaria/flutter.FH2019/blob/master/sreenshots/banner.jpg?raw=true"> </kbd>
-
 #### Screenshot
-<kbd><img src="https://github.com/jaasaria/flutter.FH2019/blob/master/sreenshots/home.jpg?raw=true" width="250" height="500"> </kbd>
-<kbd><img src="https://github.com/jaasaria/flutter.FH2019/blob/master/sreenshots/gif.gif?raw=true" width="250" height="500"> </kbd>
+<kbd><img src="https://github.com/jaasaria/flutter.FH2019/blob/master/sreenshots/gif.gif?raw=true"> </kbd>
 
 
 

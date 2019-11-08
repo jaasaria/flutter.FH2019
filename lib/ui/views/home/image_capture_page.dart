@@ -1,6 +1,9 @@
 import 'dart:io';
 import 'dart:ui' as ui;
 
+import 'package:fh2019/core/config/routes.dart';
+import 'package:fh2019/core/models/category.dart';
+import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,6 +14,7 @@ import 'package:fh2019/core/shared/custom_text_styles.dart';
 import 'package:fh2019/ui/widgets/footer_button.dart';
 
 import 'face_painter.dart';
+import 'facial_order.dart';
 
 class ImageCapturePage extends StatefulWidget {
   @override
@@ -152,7 +156,11 @@ class _ImageCapturePageState extends State<ImageCapturePage> {
                             color: CustomColors.green,
                             title: "Next",
                             func: () {
-                              Navigator.pop(context, _emotion);
+                              // Very Important
+                              // Use this function to get the list of items by emotion.
+                              getFacialOrder(Emotion.HAPPY);
+
+                              //   Navigator.pop(context, _emotion);
                             },
                           ),
                         ),
@@ -183,5 +191,22 @@ class _ImageCapturePageState extends State<ImageCapturePage> {
       _emotion = Emotion.SAD;
       return Text("Sad", style: TextStyle(color: Colors.red));
     }
+  }
+
+  void getFacialOrder(Emotion emo) async {
+    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
+    await itemViewModel.resetCartItemOrder();
+    await itemViewModel.filterItem(Category.listCategory[0]);
+
+    // Emotion emo = Emotion.SAD;
+    // Emotion emo = Emotion.HAPPY;
+    await itemViewModel.getFacialOrder(emo);
+    // Navigator.of(context).pushNamed(Routes.facialorder, emotion: emo);
+
+    Navigator.pushNamed(
+      context,
+      Routes.facialorder,
+      arguments: FacialOrder(emotion: emo),
+    );
   }
 }

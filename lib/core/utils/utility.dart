@@ -1,5 +1,4 @@
 import 'dart:math' show Random;
-import 'package:share/share.dart';
 import 'package:fh2019/core/config/app.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -7,10 +6,6 @@ class Utility {
   static int generateRandomNumber(int max) {
     var rng = new Random();
     return rng.nextInt(max);
-  }
-
-  static void callShare(String string) {
-    Share.share(string);
   }
 
   static void dialNumber(String phoneNo) async {

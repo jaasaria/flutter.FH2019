@@ -18,29 +18,19 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
-  share:
   package_info:
   url_launcher: ^5.0.3
-  google_maps_flutter: any
   provider: any
-  location: any
-  avatar_glow:
-  clippy_flutter: ^1.1.0
   navigate: ^1.0.1
   transparent_image: ^1.0.0
   toast: ^0.1.3
   flare_splash_screen: any
-  charts_flutter: ^0.6.0
   intl:
   shared_preferences: ^0.5.3+4
-  dio:
   flushbar: ^1.8.2
   progress_dialog: ^1.2.0
-  flutter_svg: ^0.14.0
   basic_utils: ^1.8.2
   modal_progress_hud: ^0.1.3
-  connectivity:
-  pull_to_refresh: ^1.5.6
   get_it: ^1.0.3
   cached_network_image: ^1.1.1
   carousel_slider: ^1.3.1

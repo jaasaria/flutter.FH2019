@@ -90,17 +90,31 @@ class _StartState extends State<Start>
                 color: Colors.grey[200],
                 child: Container(
                   child: Center(
-                    child: Text(
-                      'Welcome to APP, Brad pwed palagay ng short Description .............................',
-                      textAlign: TextAlign.center,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context)
-                          .textTheme
-                          .caption
-                          .copyWith(color: Colors.grey),
-                    ),
-                  ),
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Welcome to Dart Comrade',
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context)
+                            .textTheme
+                            .caption
+                            .copyWith(color: Colors.grey),
+                      ),
+                      Text(
+                        'Pilipino ordering app in a fun and smart way.',
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context)
+                            .textTheme
+                            .caption
+                            .copyWith(color: Colors.grey),
+                      ),
+                    ],
+                  )),
                 ))
           ],
         ));

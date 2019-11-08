@@ -89,7 +89,8 @@ class _PlayState extends State<Play>
                         ),
                         SizedBox(height: 20),
                         Text(
-                          "Item No.: ${_animation.value.toStringAsFixed(1)} ",
+                          "Item No.: ${_animation.value.toInt()} ",
+                          //   "Item No.: ${_animation.value.toStringAsFixed(1)} ",
                           style: Theme.of(context).textTheme.body1.copyWith(
                                 color: Colors.black,
                               ),

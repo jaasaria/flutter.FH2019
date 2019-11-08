@@ -1,14 +1,8 @@
 import 'package:fh2019/core/config/routes.dart';
-import 'package:fh2019/core/models/category.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
-import 'package:fh2019/core/shared/custom_media.dart';
-import 'package:fh2019/core/viewmodel/category_viewmodel.dart';
 import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:fh2019/ui/widgets/carousel_banner.dart';
-import 'package:fh2019/ui/widgets/category_button.dart';
 import 'package:fh2019/ui/widgets/footer_button.dart';
-import 'package:fh2019/ui/widgets/footer_summary.dart';
-import 'package:fh2019/ui/widgets/item_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

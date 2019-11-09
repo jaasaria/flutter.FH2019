@@ -8,7 +8,7 @@
 
 <!-- My first open source project made in FLUTTER.  📱🚀💖 <br> -->
 
-Nowadays, big companies like McDonalds and Jollibee have their own Ordering Kiosk to help them get customer orders in a smooth and convenient way. 
+Nowadays, big companies like McDonalds and Jollibee have their own Ordering Kiosk to help them get customer orders fast and convenient way. 
 
 Inspired by these successful food chains we created this app to help local food businesses like "Karendirya"  to experience and have their menus and orders right on their customer palm.
  

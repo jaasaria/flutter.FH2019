@@ -333,7 +333,5 @@ class LoadingIndicator extends StatelessWidget {
         )
       ],
     );
-
-    Center(child: CircularProgressIndicator());
   }
 }

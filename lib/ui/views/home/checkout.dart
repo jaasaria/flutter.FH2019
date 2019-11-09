@@ -38,6 +38,7 @@ class _CheckOutState extends State<CheckOut>
   Widget build(BuildContext context) {
     final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
     pr = new ProgressDialog(context);
+    pr.style(message: "Saving Data...");
 
     return Scaffold(
         body: Column(

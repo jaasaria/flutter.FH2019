@@ -12,10 +12,13 @@ import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import 'package:provider/provider.dart';
 
 import 'face_painter.dart';
 import 'dart:ui' as ui;
+
+ProgressDialog pr;
 
 class FacialPicture extends StatefulWidget {
   FacialPicture({Key key}) : super(key: key);
@@ -41,80 +44,13 @@ class _FacialPictureState extends State<FacialPicture>
     super.initState();
   }
 
-  _getImageAndDetectFaces({bool isCamera = true}) async {
-    File imageFile;
-    if (isCamera) {
-      imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
-    } else {
-      imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
-    }
-
-    setState(() {
-      isLoading = true;
-    });
-
-    if (imageFile == null) {
-      setState(() => isLoading = false);
-      print('end1');
-      return;
-    }
-    print('end2');
-
-//     FirebaseVisionFaceDetectorOptions highAccuracyOpts =
-//         new FirebaseVisionFaceDetectorOptions.Builder()
-//             .setPerformanceMode(FirebaseVisionFaceDetectorOptions.ACCURATE)
-//             .setLandmarkMode(FirebaseVisionFaceDetectorOptions.ALL_LANDMARKS)
-//             .setClassificationMode(
-//                 FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
-//             .build();
-
-// val highAccuracyOpts = FirebaseVisionFaceDetectorOptions.Builder()
-//         .setPerformanceMode(FirebaseVisionFaceDetectorOptions.ACCURATE)
-//         .setLandmarkMode(FirebaseVisionFaceDetectorOptions.ALL_LANDMARKS)
-//         .setClassificationMode(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
-//         .build()
-
-    final image = FirebaseVisionImage.fromFile(imageFile);
-    final faceDetector = FirebaseVision.instance.faceDetector();
-    List<Face> faces = await faceDetector.processImage(image);
-
-    print('${faces.length}');
-    print('EVER AFTER');
-
-    for (var face in faces) {
-      print(face.smilingProbability);
-
-      // If classification was enabled with FaceDetectorOptions:
-      if (face.smilingProbability != null) {
-        _smilingProbability = face.smilingProbability;
-
-        print(face.smilingProbability);
-      }
-    }
-
-    if (mounted) {
-      setState(() {
-        _emotionEquivalent(_smilingProbability);
-        _imageFile = imageFile;
-        _faces = faces;
-        _loadImage(imageFile);
-      });
-    }
-  }
-
-  _loadImage(File file) async {
-    final data = await file.readAsBytes();
-    await decodeImageFromList(data).then(
-      (value) => setState(() {
-        _image = value;
-        isLoading = false;
-      }),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
+    pr = new ProgressDialog(context);
+    pr.style(
+      message: 'Preparing Items...',
+    );
 
     return Scaffold(
         body: Column(
@@ -123,37 +59,6 @@ class _FacialPictureState extends State<FacialPicture>
             Expanded(
                 child: Stack(
               children: <Widget>[
-                Container(),
-                Positioned(
-                  right: 10,
-                  bottom: 20,
-                  child: MaterialButton(
-                    padding: EdgeInsets.all(15),
-                    shape: CircleBorder(),
-                    color: CustomColors.green,
-                    onPressed: () => _getImageAndDetectFaces(isCamera: false),
-                    elevation: 2,
-                    child: Icon(
-                      Icons.image,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 10,
-                  bottom: 90,
-                  child: MaterialButton(
-                    padding: EdgeInsets.all(15),
-                    shape: CircleBorder(),
-                    color: CustomColors.green,
-                    onPressed: () => _getImageAndDetectFaces(isCamera: true),
-                    elevation: 2,
-                    child: Icon(
-                      Icons.camera,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
                 Align(
                     child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -161,7 +66,7 @@ class _FacialPictureState extends State<FacialPicture>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       isLoading
-                          ? Center(child: CircularProgressIndicator())
+                          ? new LoadingIndicator()
                           : (_imageFile == null)
                               ? _buildNoImageSelected(context)
                               : SingleChildScrollView(
@@ -203,7 +108,7 @@ class _FacialPictureState extends State<FacialPicture>
                                           : Container(),
                                       (_faces.length > 0)
                                           ? Text(
-                                              "Smiling Probability: $_smilingProbability",
+                                              "Smiling Probability: ${_smilingProbability.toStringAsFixed(4)}",
                                               textAlign: TextAlign.center,
                                               style: Theme.of(context)
                                                   .textTheme
@@ -219,6 +124,36 @@ class _FacialPictureState extends State<FacialPicture>
                     ],
                   ),
                 )),
+                Positioned(
+                  right: 10,
+                  bottom: 20,
+                  child: MaterialButton(
+                    padding: EdgeInsets.all(15),
+                    shape: CircleBorder(),
+                    color: CustomColors.green,
+                    onPressed: () => _getImageAndDetectFaces(isCamera: false),
+                    elevation: 2,
+                    child: Icon(
+                      Icons.image,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: 10,
+                  bottom: 90,
+                  child: MaterialButton(
+                    padding: EdgeInsets.all(15),
+                    shape: CircleBorder(),
+                    color: CustomColors.green,
+                    onPressed: () => _getImageAndDetectFaces(isCamera: true),
+                    elevation: 2,
+                    child: Icon(
+                      Icons.camera,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ],
             )),
           ],
@@ -298,15 +233,15 @@ class _FacialPictureState extends State<FacialPicture>
   }
 
   void getFacialOrder() async {
+    pr.show();
+    await Future.delayed(Duration(seconds: 1));
+
     final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
     await itemViewModel.resetCartItemOrder();
     await itemViewModel.filterItem(Category.listCategory[0]);
 
-    // Emotion emo = Emotion.SAD;
-    // Emotion emo = Emotion.HAPPY;
     await itemViewModel.getFacialOrder(_emotion);
-    // Navigator.of(context).pushNamed(Routes.facialorder, emotion: emo);
-
+    await pr.hide();
     Navigator.pushNamed(
       context,
       Routes.facialorder,
@@ -316,5 +251,89 @@ class _FacialPictureState extends State<FacialPicture>
 
   cancelOrder() {
     Navigator.of(context).pop();
+  }
+
+  _getImageAndDetectFaces({bool isCamera = true}) async {
+    File imageFile;
+    if (isCamera) {
+      imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
+    } else {
+      imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
+    }
+
+    setState(() {
+      isLoading = true;
+    });
+    if (imageFile == null) {
+      setState(() => isLoading = false);
+      return;
+    }
+
+    final image = FirebaseVisionImage.fromFile(imageFile);
+    final faceDetector = FirebaseVision.instance
+        .faceDetector(FaceDetectorOptions(enableClassification: true));
+    List<Face> faces = await faceDetector.processImage(image);
+
+    for (var face in faces) {
+      print(face.smilingProbability);
+      // If classification was enabled with FaceDetectorOptions:
+      if (face.smilingProbability != null) {
+        _smilingProbability = face.smilingProbability;
+      }
+    }
+
+    if (mounted) {
+      setState(() {
+        _emotionEquivalent(_smilingProbability);
+        _imageFile = imageFile;
+        _faces = faces;
+        _loadImage(imageFile);
+      });
+    }
+  }
+
+  _loadImage(File file) async {
+    final data = await file.readAsBytes();
+    await decodeImageFromList(data).then(
+      (value) => setState(() {
+        _image = value;
+        isLoading = false;
+      }),
+    );
+  }
+}
+
+class LoadingIndicator extends StatelessWidget {
+  const LoadingIndicator({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        CircularProgressIndicator(),
+        Text(
+          "Image Processing",
+          style: Theme.of(context).textTheme.headline.copyWith(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        Text(
+          "Take seconds to read the image. Please wait",
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.body1.copyWith(
+                color: Colors.black,
+              ),
+        )
+      ],
+    );
+
+    Center(child: CircularProgressIndicator());
   }
 }

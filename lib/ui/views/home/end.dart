@@ -38,6 +38,7 @@ class _EndState extends State<End> with AutomaticKeepAliveClientMixin<End> {
             CarouselBanner(),
             Expanded(
                 child: Container(
+              padding: EdgeInsets.only(bottom: CustomMedia.screenHeight * .25),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

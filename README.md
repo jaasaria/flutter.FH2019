@@ -18,7 +18,7 @@ This app uses the ML kit for detecting faces and classify the smile probability.
 
  
 #### Project Partner
-Team: Dart Comrade
+Team: Dart Comrade <br>
 Name: [Adrian Evangelista](https://github.com/adriane-macer) <br>
 Github: [Link](https://github.com/adriane-macer/intelligent_ordering_system_app) <br>
 Module: Facial Recognition (FB ML Vision) <br>

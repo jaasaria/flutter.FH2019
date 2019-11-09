@@ -41,11 +41,49 @@ class _StartState extends State<Start>
             Expanded(
                 child: Container(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  // Need to add description. Next Item description
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: CustomMedia.screenHeight * .1,
+                    ),
+                    child: Container(
+                      height: CustomMedia.screenHeight * .10,
+                      child: Image.asset(
+                        "assets/images/logos/logo.png",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: CustomMedia.screenHeight * .025,
+                      bottom: CustomMedia.screenHeight * .005,
+                    ),
+                    child: Text(
+                      "Dart Comrade",
+                      style: Theme.of(context).textTheme.headline.copyWith(
+                            color: Colors.black,
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ),
+                  Text(
+                    'Pilipino food ordering app in a fun and smart way',
+                    textAlign: TextAlign.center,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context)
+                        .textTheme
+                        .body1
+                        .copyWith(color: Colors.grey),
+                  ),
+                  SizedBox(
+                    height: CustomMedia.screenHeight * .05,
+                  ),
                   Container(
                     width: CustomMedia.screenWidth * .8,
                     child: StartButton(
@@ -56,7 +94,9 @@ class _StartState extends State<Start>
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 15),
+                    padding: EdgeInsets.symmetric(
+                      vertical: CustomMedia.screenHeight * .015,
+                    ),
                     width: CustomMedia.screenWidth * .8,
                     child: StartButton(
                       title: "Face Me!",
@@ -94,7 +134,7 @@ class _StartState extends State<Start>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Welcome to Dart Comrade',
+                        '© 2019. Made with ❤️',
                         textAlign: TextAlign.center,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
@@ -104,7 +144,7 @@ class _StartState extends State<Start>
                             .copyWith(color: Colors.grey),
                       ),
                       Text(
-                        'Pilipino ordering app in a fun and smart way.',
+                        'Developed by: Adrian Evangelista and John Andrew Asaria',
                         textAlign: TextAlign.center,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,

@@ -40,6 +40,7 @@ dependencies:
 
 dev_dependencies:
   # https://medium.com/@psyanite/how-to-add-app-launcher-icons-in-flutter-bd92b0e0873a
+  # flutter packages pub run flutter_launcher_icons:main
   # https://adapticon.tooo.io/
   flutter_launcher_icons: "^0.7.0"
   font_awesome_flutter:

@@ -34,7 +34,7 @@ class Item {
           Category.listCategory[3],
           Category.listCategory[7]
         ],
-        emotion: Emotion.SAD,
+        emotion: Emotion.NORMAL,
         image: 'assets/images/items/chicken/easy_chicken_adobo.jpg',
         price: 50.00,
         addCart: false,
@@ -42,7 +42,7 @@ class Item {
     Item(
         name: "Bacon and Egg Filipino Chicken Adobo",
         category: <Category>[Category.listCategory[3]],
-        emotion: Emotion.NORMAL,
+        emotion: Emotion.HAPPY,
         image:
             'assets/images/items/chicken/bacon_and_egg_chicken_adobo_recipe.jpg',
         price: 70.00,
@@ -84,7 +84,7 @@ class Item {
         name:
             "Grilled Pork Belly with Garlic Fried Rice and Fried Egg – Liempo Sinangag Itlog",
         category: <Category>[Category.listCategory[4]],
-        emotion: Emotion.NORMAL,
+        emotion: Emotion.SAD,
         image:
             'assets/images/items/pork/How_to_Cook-Liempo_Sinangag_at_Itlog_Meal.jpg',
         price: 80.00,
@@ -102,7 +102,7 @@ class Item {
         addCart: false,
         orderQty: 1),
     Item(
-        name: "Danggit Silog",
+        name: "Danggit Silog w/ Rice",
         category: <Category>[
           Category.listCategory[2],
           Category.listCategory[7]
@@ -110,6 +110,26 @@ class Item {
         emotion: Emotion.NORMAL,
         image: 'assets/images/items/seafood/Danggit_Sinangag.jpg',
         price: 60.00,
+        addCart: false,
+        orderQty: 1),
+    Item(
+        name: "Sinigang na Sugpo",
+        category: <Category>[
+          Category.listCategory[2],
+        ],
+        emotion: Emotion.NORMAL,
+        image: 'assets/images/items/seafood/sinigang_sugpo.jpg',
+        price: 50.00,
+        addCart: false,
+        orderQty: 1),
+    Item(
+        name: "Sinigang na Bangus",
+        category: <Category>[
+          Category.listCategory[2],
+        ],
+        emotion: Emotion.NORMAL,
+        image: 'assets/images/items/seafood/sinigang_bangus.jpg',
+        price: 50.00,
         addCart: false,
         orderQty: 1),
 
@@ -142,6 +162,14 @@ class Item {
         price: 60.00,
         addCart: false,
         orderQty: 1),
+    Item(
+        name: "Beef Ribs Sinigang",
+        category: <Category>[Category.listCategory[5]],
+        emotion: Emotion.NORMAL,
+        image: 'assets/images/items/beef/beef_sinigang.jpg',
+        price: 60.00,
+        addCart: false,
+        orderQty: 1),
 
     // Vegetables
     Item(
@@ -158,7 +186,7 @@ class Item {
           Category.listCategory[1],
           Category.listCategory[4]
         ],
-        emotion: Emotion.HAPPY,
+        emotion: Emotion.NORMAL,
         image: 'assets/images/items/vegetables/Ginataang_Gulay.jpg',
         price: 65.00,
         addCart: false,
@@ -180,6 +208,40 @@ class Item {
         addCart: false,
         orderQty: 1),
     Item(
+        name: "Chop Suey",
+        category: <Category>[Category.listCategory[1]],
+        emotion: Emotion.NORMAL,
+        image: 'assets/images/items/vegetables/ChopSuey.jpg',
+        price: 40.00,
+        addCart: false,
+        orderQty: 1),
+    Item(
+        name: "Ginisang Sayote",
+        category: <Category>[Category.listCategory[1]],
+        emotion: Emotion.NORMAL,
+        image: 'assets/images/items/vegetables/Ginisang_Sayote.jpg',
+        price: 50.00,
+        addCart: false,
+        orderQty: 1),
+    Item(
+        name: "Ginisang Monggo with Dilis",
+        category: <Category>[Category.listCategory[1]],
+        emotion: Emotion.NORMAL,
+        image: 'assets/images/items/vegetables/Monggo.jpg',
+        price: 50.00,
+        addCart: false,
+        orderQty: 1),
+    Item(
+        name: "Sinigang na Baboy with Gabi",
+        category: <Category>[Category.listCategory[1]],
+        emotion: Emotion.HAPPY,
+        image: 'assets/images/items/vegetables/Sinigang_Baboy.jpg',
+        price: 50.00,
+        addCart: false,
+        orderQty: 1),
+
+    // DESSERTS
+    Item(
         name: "Maja Blanca",
         category: <Category>[Category.listCategory[6]],
         emotion: Emotion.HAPPY,
@@ -193,6 +255,38 @@ class Item {
         emotion: Emotion.SAD,
         image: 'assets/images/items/desserts/Leche_Flan.jpg',
         price: 50.00,
+        addCart: false,
+        orderQty: 1),
+    Item(
+        name: "Mayo Brownies",
+        category: <Category>[Category.listCategory[6]],
+        emotion: Emotion.HAPPY,
+        image: 'assets/images/items/desserts/mayo_brownies.jpg',
+        price: 20.00,
+        addCart: false,
+        orderQty: 1),
+    Item(
+        name: "Buko Pandan",
+        category: <Category>[Category.listCategory[6]],
+        emotion: Emotion.SAD,
+        image: 'assets/images/items/desserts/Buko_Pandan.jpg',
+        price: 30.00,
+        addCart: false,
+        orderQty: 1),
+    Item(
+        name: "Suman sa Ibos",
+        category: <Category>[Category.listCategory[6]],
+        emotion: Emotion.NORMAL,
+        image: 'assets/images/items/desserts/Suman.jpg',
+        price: 10.00,
+        addCart: false,
+        orderQty: 1),
+    Item(
+        name: "Turon",
+        category: <Category>[Category.listCategory[6]],
+        emotion: Emotion.NORMAL,
+        image: 'assets/images/items/desserts/Turon.jpg',
+        price: 10.00,
         addCart: false,
         orderQty: 1),
   ];

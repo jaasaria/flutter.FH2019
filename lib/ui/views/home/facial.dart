@@ -119,25 +119,7 @@ class _FacialState extends State<Facial>
   }
 
   void takePicture() {
-    // Navigator.of(context).pushNamed(Routes.facialcapture);
     Navigator.of(context).pushNamed(Routes.facialpicture);
-  }
-
-  void getFacialOrder() async {
-    final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
-    await itemViewModel.resetCartItemOrder();
-    await itemViewModel.filterItem(Category.listCategory[0]);
-
-    // Emotion emo = Emotion.SAD;
-    Emotion emo = Emotion.HAPPY;
-    await itemViewModel.getFacialOrder(emo);
-    // Navigator.of(context).pushNamed(Routes.facialorder, emotion: emo);
-
-    Navigator.pushNamed(
-      context,
-      Routes.facialorder,
-      arguments: FacialOrder(emotion: emo),
-    );
   }
 
   cancelOrder() {

@@ -100,7 +100,7 @@ class _FacialPictureState extends State<FacialPicture>
                                                   .textTheme
                                                   .headline
                                                   .copyWith(
-                                                    color: Colors.black,
+                                                    color: _color,
                                                     fontSize: 20,
                                                     fontWeight: FontWeight.bold,
                                                   ),
@@ -108,7 +108,7 @@ class _FacialPictureState extends State<FacialPicture>
                                           : Container(),
                                       (_faces.length > 0)
                                           ? Text(
-                                              "Smiling Probability: ${_smilingProbability.toStringAsFixed(4)}",
+                                              "Smiling Probability: ${(_smilingProbability * 100).toStringAsFixed(2)}%",
                                               textAlign: TextAlign.center,
                                               style: Theme.of(context)
                                                   .textTheme
@@ -233,7 +233,11 @@ class _FacialPictureState extends State<FacialPicture>
   }
 
   void getFacialOrder() async {
-    pr.show();
+    WidgetsBinding.instance.addPostFrameCallback((Duration d) {
+      pr.show();
+    });
+
+    // pr.show();
     await Future.delayed(Duration(seconds: 1));
 
     final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
@@ -242,7 +246,8 @@ class _FacialPictureState extends State<FacialPicture>
 
     await itemViewModel.getFacialOrder(_emotion);
     await pr.hide();
-    Navigator.pushNamed(
+
+    Navigator.pushReplacementNamed(
       context,
       Routes.facialorder,
       arguments: FacialOrder(emotion: _emotion),
@@ -316,6 +321,9 @@ class LoadingIndicator extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         CircularProgressIndicator(),
+        SizedBox(
+          height: 10,
+        ),
         Text(
           "Image Processing",
           style: Theme.of(context).textTheme.headline.copyWith(
@@ -325,7 +333,7 @@ class LoadingIndicator extends StatelessWidget {
               ),
         ),
         Text(
-          "Take seconds to read the image. Please wait",
+          "Take seconds to read the image. Please wait ...",
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.body1.copyWith(
                 color: Colors.black,

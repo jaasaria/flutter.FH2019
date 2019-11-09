@@ -63,6 +63,7 @@ class _FacialItemCardState extends State<FacialItemCard> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           Expanded(
+                            flex: 2,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,7 +71,7 @@ class _FacialItemCardState extends State<FacialItemCard> {
                               children: <Widget>[
                                 Container(
                                   child: Text(
-                                    ' ${widget.item.orderQty}X ${widget.item.name}',
+                                    '${widget.item.name}',
                                     style: Theme.of(context).textTheme.body2,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
@@ -78,30 +79,31 @@ class _FacialItemCardState extends State<FacialItemCard> {
                                 ),
                                 Text(
                                   '${widget.item.price}',
-                                  style: Theme.of(context).textTheme.subhead,
+                                  textAlign: TextAlign.right,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subhead
+                                      .copyWith(
+                                        color: CustomColors.green,
+                                      ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
                                 ),
                               ],
                             ),
                           ),
                           Expanded(
+                            flex: 1,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
                                 Text(
-                                  '${widget.item.price * widget.item.orderQty}',
-                                  textAlign: TextAlign.right,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .title
-                                      .copyWith(color: CustomColors.red),
+                                  'X ${widget.item.orderQty}',
+                                  style: Theme.of(context).textTheme.body2,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 2,
-                                ),
-                                Text(
-                                  'Total',
-                                  style: Theme.of(context).textTheme.caption,
                                 ),
                               ],
                             ),

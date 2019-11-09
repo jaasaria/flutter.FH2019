@@ -140,6 +140,6 @@ class _FacialOrderState extends State<FacialOrder>
   }
 
   proceedCheckOut() async {
-    Navigator.of(context).pushNamed(Routes.checkout);
+    Navigator.of(context).pushReplacementNamed(Routes.checkout);
   }
 }

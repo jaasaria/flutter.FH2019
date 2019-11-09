@@ -14,6 +14,7 @@ Inspired by these successful food chains, we created this app to help local food
 
  
 #### Project Partner
+Team: Dart Comrade
 Name: [Adrian Evangelista](https://github.com/adriane-macer) <br>
 Github: [Link](https://github.com/adriane-macer/intelligent_ordering_system_app) <br>
 Module: Facial Recognition (FB ML Vision) <br>

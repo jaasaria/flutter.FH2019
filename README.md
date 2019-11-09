@@ -9,8 +9,15 @@
 My first open source project made in FLUTTER.  📱🚀💖
  
 #### Project Partner
-Name: Adrian Evangelista <br>
-Github: https://github.com/adriane-macer
+
+
+Name: [Adrian Evangelista](https://github.com/adriane-macer) <br>
+Github: [Link](https://github.com/adriane-macer/intelligent_ordering_system_app) <br>
+Module: Facial Recognition (FB ML Vision) <br>
+Shoutout to this guy for helping me finish our project. Thank you so much bro!
+
+
+
 
 
 If happen you 💖 my project please dont forget to give me a ⭐. Show your love and give me more motivation to create more open source project. 🤝
@@ -21,7 +28,7 @@ If happen you 💖 my project please dont forget to give me a ⭐. Show your lov
 
 
 #### Todo: More Samples
-- [ ] Facial Recognition (error)
+- [ ] Facial Recognition (Fixing)
 - [ ] More Animation 
     - Listview
     - Button
@@ -51,5 +58,6 @@ flutter clean
 #### Credits
 https://www.freepik.com/ <br>
 https://panlasangpinoy.com/ <br>
-https://www.2dimensions.com
+https://www.2dimensions.com <br>
+https://medium.com/flutter-community/flutter-face-detection-ac18e3e2211f
 

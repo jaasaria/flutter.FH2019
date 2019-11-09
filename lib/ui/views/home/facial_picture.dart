@@ -60,6 +60,20 @@ class _FacialPictureState extends State<FacialPicture>
     }
     print('end2');
 
+//     FirebaseVisionFaceDetectorOptions highAccuracyOpts =
+//         new FirebaseVisionFaceDetectorOptions.Builder()
+//             .setPerformanceMode(FirebaseVisionFaceDetectorOptions.ACCURATE)
+//             .setLandmarkMode(FirebaseVisionFaceDetectorOptions.ALL_LANDMARKS)
+//             .setClassificationMode(
+//                 FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
+//             .build();
+
+// val highAccuracyOpts = FirebaseVisionFaceDetectorOptions.Builder()
+//         .setPerformanceMode(FirebaseVisionFaceDetectorOptions.ACCURATE)
+//         .setLandmarkMode(FirebaseVisionFaceDetectorOptions.ALL_LANDMARKS)
+//         .setClassificationMode(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
+//         .build()
+
     final image = FirebaseVisionImage.fromFile(imageFile);
     final faceDetector = FirebaseVision.instance.faceDetector();
     List<Face> faces = await faceDetector.processImage(image);

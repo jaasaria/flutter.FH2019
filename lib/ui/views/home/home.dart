@@ -18,22 +18,18 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
+class _HomeState extends State<Home>
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin<Home> {
   @override
   bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
-    if (mounted) {}
   }
 
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-    //   statusBarColor: Colors.white,
-    // ));
-
     final CategoryViewModel categoryViewModel =
         Provider.of<CategoryViewModel>(context);
 

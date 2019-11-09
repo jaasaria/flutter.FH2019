@@ -21,7 +21,7 @@ If happen you 💖 my project please dont forget to give me a ⭐. Show your lov
 
 
 #### Todo: More Samples
-- [ ] Facial Recognition (Unfinish)
+- [ ] Facial Recognition (error)
 - [ ] More Animation 
     - Listview
     - Button
@@ -50,5 +50,6 @@ flutter clean
 
 #### Credits
 https://www.freepik.com/ <br>
-https://panlasangpinoy.com/
+https://panlasangpinoy.com/ <br>
+https://www.2dimensions.com
 

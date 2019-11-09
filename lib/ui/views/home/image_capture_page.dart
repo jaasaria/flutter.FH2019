@@ -47,6 +47,7 @@ class _ImageCapturePageState extends State<ImageCapturePage> {
         _smilingProbability = face.smilingProbability;
       }
     }
+
     if (mounted) {
       setState(() {
         _imageFile = capturedImage;

@@ -28,7 +28,6 @@ class _ItemCardState extends State<ItemCard>
 
     _controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-
     widget.item.addCart ? _controller.reverse() : _controller.forward();
   }
 

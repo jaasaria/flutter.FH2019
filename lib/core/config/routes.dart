@@ -12,4 +12,5 @@ class Routes {
 
   static final String facialcapture = 'facial_capture';
   static final String facialorder = 'facial_order';
+  static final String facialpicture = 'facial_picture';
 }

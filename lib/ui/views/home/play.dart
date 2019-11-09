@@ -23,6 +23,8 @@ class _PlayState extends State<Play>
   Animation<double> _animation;
   double _numberPicture = 0;
 
+  bool disableButton = false;
+
   @override
   void initState() {
     super.initState();
@@ -40,10 +42,11 @@ class _PlayState extends State<Play>
     _controller.dispose();
   }
 
-  generateRandomNumber() {
+  generateRandomNumber() async {
     int rng = Utility.generateRandomNumber(Item.listServices.length);
 
     setState(() {
+      disableButton = true;
       _numberPicture = rng.toDouble();
       _animation = new Tween<double>(
         begin: _animation.value,
@@ -54,6 +57,12 @@ class _PlayState extends State<Play>
       ));
     });
     _controller.forward(from: 0.0);
+
+    await Future.delayed(Duration(seconds: 3));
+
+    setState(() {
+      disableButton = false;
+    });
   }
 
   @override
@@ -89,27 +98,26 @@ class _PlayState extends State<Play>
                         ),
                         SizedBox(height: 20),
                         Text(
-                          //   "Item No.: ${_animation.value.toInt()} ",
                           "Item No.: ${_animation.value.toStringAsFixed(1)} ",
                           style: Theme.of(context).textTheme.body1.copyWith(
                                 color: Colors.black,
                               ),
                         ),
+                        SizedBox(height: 10),
                         Text(
                           "${Item.listServices[_animation.value.toInt()].name}",
                           style: Theme.of(context).textTheme.headline.copyWith(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: CustomColors.green),
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
+                          maxLines: 3,
                         ),
                         Text(
                           "Price: ${Item.listServices[_animation.value.toInt()].price} ",
-                          style: Theme.of(context).textTheme.headline.copyWith(
-                                color: Colors.black,
-                                fontSize: 20,
+                          style: Theme.of(context).textTheme.body1.copyWith(
+                                fontSize: 17,
                               ),
                         ),
                       ],
@@ -147,7 +155,7 @@ class _PlayState extends State<Play>
                     child: new FooterButton(
                       color: CustomColors.blue,
                       title: "Generate Item",
-                      func: () => generateRandomNumber(),
+                      func: disableButton ? null : () => generateRandomNumber(),
                     ),
                   ),
                 ],

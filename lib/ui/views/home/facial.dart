@@ -11,6 +11,7 @@ import 'package:fh2019/ui/widgets/category_button.dart';
 import 'package:fh2019/ui/widgets/footer_button.dart';
 import 'package:fh2019/ui/widgets/footer_summary.dart';
 import 'package:fh2019/ui/widgets/item_card.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +47,7 @@ class _FacialState extends State<Facial>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    height: CustomMedia.screenHeight * .15,
+                    height: CustomMedia.screenHeight * .30,
                     width: MediaQuery.of(context).size.width,
                     child: ClipRRect(
                       borderRadius: BorderRadius.only(
@@ -54,7 +55,7 @@ class _FacialState extends State<Facial>
                         topRight: Radius.circular(50),
                       ),
                       child: Image.asset(
-                        "assets/images/items/others/selfie.jpg",
+                        "assets/images/items/others/selfie.png",
                         fit: BoxFit.fitHeight,
                       ),
                     ),
@@ -107,7 +108,7 @@ class _FacialState extends State<Facial>
                     child: new FooterButton(
                       color: CustomColors.blue,
                       title: "Next",
-                      func: () => getFacialOrder(),
+                      func: () => takePicture(),
                     ),
                   ),
                 ],
@@ -118,7 +119,8 @@ class _FacialState extends State<Facial>
   }
 
   void takePicture() {
-    Navigator.of(context).pushNamed(Routes.facialcapture);
+    // Navigator.of(context).pushNamed(Routes.facialcapture);
+    Navigator.of(context).pushNamed(Routes.facialpicture);
   }
 
   void getFacialOrder() async {

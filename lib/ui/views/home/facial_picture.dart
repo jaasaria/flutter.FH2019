@@ -259,41 +259,45 @@ class _FacialPictureState extends State<FacialPicture>
   }
 
   _getImageAndDetectFaces({bool isCamera = true}) async {
-    File imageFile;
-    if (isCamera) {
-      imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
-    } else {
-      imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
-    }
-
-    setState(() {
-      isLoading = true;
-    });
-    if (imageFile == null) {
-      setState(() => isLoading = false);
-      return;
-    }
-
-    final image = FirebaseVisionImage.fromFile(imageFile);
-    final faceDetector = FirebaseVision.instance
-        .faceDetector(FaceDetectorOptions(enableClassification: true));
-    List<Face> faces = await faceDetector.processImage(image);
-
-    for (var face in faces) {
-      print(face.smilingProbability);
-      // If classification was enabled with FaceDetectorOptions:
-      if (face.smilingProbability != null) {
-        _smilingProbability = face.smilingProbability;
+    try {
+      File imageFile;
+      if (isCamera) {
+        imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
+      } else {
+        imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
       }
-    }
 
-    if (mounted) {
       setState(() {
-        _emotionEquivalent(_smilingProbability);
-        _imageFile = imageFile;
-        _faces = faces;
-        _loadImage(imageFile);
+        isLoading = true;
       });
+      if (imageFile == null) {
+        setState(() => isLoading = false);
+        return;
+      }
+
+      final image = FirebaseVisionImage.fromFile(imageFile);
+      final faceDetector = FirebaseVision.instance
+          .faceDetector(FaceDetectorOptions(enableClassification: true));
+      List<Face> faces = await faceDetector.processImage(image);
+
+      for (var face in faces) {
+        print(face.smilingProbability);
+        // If classification was enabled with FaceDetectorOptions:
+        if (face.smilingProbability != null) {
+          _smilingProbability = face.smilingProbability;
+        }
+      }
+
+      if (mounted) {
+        setState(() {
+          _emotionEquivalent(_smilingProbability);
+          _imageFile = imageFile;
+          _faces = faces;
+          _loadImage(imageFile);
+        });
+      }
+    } catch (err) {
+      print('${err.toString()}');
     }
   }
 

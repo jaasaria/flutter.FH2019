@@ -24,6 +24,7 @@ class FooterButton extends StatelessWidget {
       color: color,
       child: Text(
         "${title.toString()}",
+        textAlign: TextAlign.center,
         style: TextStyle(color: Colors.white),
       ),
     );

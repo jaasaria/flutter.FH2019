@@ -29,21 +29,22 @@ class _FacialItemCardState extends State<FacialItemCard> {
       child: Card(
         child: Container(
           width: CustomMedia.screenWidth,
-          height: CustomMedia.screenHeight * .10,
+          height: CustomMedia.screenHeight * .14,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: EdgeInsets.symmetric(
+                    horizontal: CustomMedia.screenWidth * .03),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 8),
+                      padding: EdgeInsets.symmetric(vertical: 5),
                       width: CustomMedia.screenWidth * .20,
                       height: CustomMedia.screenHeight * .10,
                       child: ClipRRect(
@@ -55,9 +56,9 @@ class _FacialItemCardState extends State<FacialItemCard> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: EdgeInsets.all(CustomMedia.screenHeight * .01),
                       width: CustomMedia.screenWidth * .65,
-                      height: 70,
+                      height: CustomMedia.screenHeight * .10,
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -77,17 +78,19 @@ class _FacialItemCardState extends State<FacialItemCard> {
                                     maxLines: 2,
                                   ),
                                 ),
-                                Text(
-                                  '${widget.item.price}',
-                                  textAlign: TextAlign.right,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subhead
-                                      .copyWith(
-                                        color: CustomColors.green,
-                                      ),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
+                                Expanded(
+                                  child: Text(
+                                    '${widget.item.price}',
+                                    textAlign: TextAlign.right,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subhead
+                                        .copyWith(
+                                          color: CustomColors.green,
+                                        ),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                  ),
                                 ),
                               ],
                             ),

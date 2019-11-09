@@ -6,6 +6,7 @@ import 'package:fh2019/core/viewmodel/category_viewmodel.dart';
 import 'package:fh2019/core/viewmodel/item_viewmodel.dart';
 import 'package:fh2019/ui/widgets/carousel_banner.dart';
 import 'package:fh2019/ui/widgets/checkout_card.dart';
+import 'package:fh2019/ui/widgets/facial_item_card.dart';
 import 'package:fh2019/ui/widgets/footer_button.dart';
 import 'package:fh2019/ui/widgets/footer_summary.dart';
 import 'package:flutter/cupertino.dart';
@@ -59,17 +60,7 @@ class _CheckOutState extends State<CheckOut>
         bottomNavigationBar: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Container(
-              height: CustomMedia.screenHeight * .10,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  new FooterSummary(itemViewModel: itemViewModel)
-                ],
-              ),
-            ),
+            FooterSummary(itemViewModel: itemViewModel),
             Container(
               padding: EdgeInsets.all(5),
               color: Colors.grey[200],

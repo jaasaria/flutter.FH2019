@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fh2019/core/shared/custom_assets.dart';
+import 'package:fh2019/core/shared/custom_media.dart';
 import 'package:flutter/material.dart';
 
 class CarouselBanner extends StatelessWidget {
@@ -10,7 +11,7 @@ class CarouselBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-      height: 130,
+      height: CustomMedia.screenHeight * .16,
       // aspectRatio: 16 / 9,
       aspectRatio: MediaQuery.of(context).size.aspectRatio,
       viewportFraction: 1.0,

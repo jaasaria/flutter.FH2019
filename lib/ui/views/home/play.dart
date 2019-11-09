@@ -43,26 +43,27 @@ class _PlayState extends State<Play>
   }
 
   generateRandomNumber() async {
-    int rng = Utility.generateRandomNumber(Item.listServices.length);
-
-    setState(() {
-      disableButton = true;
-      _numberPicture = rng.toDouble();
-      _animation = new Tween<double>(
-        begin: _animation.value,
-        end: _numberPicture,
-      ).animate(new CurvedAnimation(
-        curve: Curves.fastOutSlowIn,
-        parent: _controller,
-      ));
-    });
-    _controller.forward(from: 0.0);
-
-    await Future.delayed(Duration(seconds: 3));
-
-    setState(() {
-      disableButton = false;
-    });
+    try {
+      int rng = Utility.generateRandomNumber(Item.listServices.length);
+      setState(() {
+        disableButton = true;
+        _numberPicture = rng.toDouble();
+        _animation = new Tween<double>(
+          begin: _animation.value,
+          end: _numberPicture,
+        ).animate(new CurvedAnimation(
+          curve: Curves.fastOutSlowIn,
+          parent: _controller,
+        ));
+      });
+      _controller.forward(from: 0.0);
+      await Future.delayed(Duration(seconds: 3));
+      setState(() {
+        disableButton = false;
+      });
+    } catch (err) {
+      print(err);
+    }
   }
 
   @override

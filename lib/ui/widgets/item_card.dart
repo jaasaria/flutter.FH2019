@@ -74,12 +74,7 @@ class _ItemCardState extends State<ItemCard>
                         placeholder: MemoryImage(kTransparentImage),
                         image: AssetImage("${widget.item.image}"),
                         fit: BoxFit.cover,
-                      )
-                      // Image.asset(
-                      //   "${widget.item.image}",
-                      //   fit: BoxFit.cover,
-                      // ),
-                      ),
+                      )),
                 ),
                 widget.item.addCart
                     ? Container(

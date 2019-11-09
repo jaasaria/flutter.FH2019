@@ -40,20 +40,22 @@ class _CheckOutCardState extends State<CheckOutCard> {
           width: CustomMedia.screenWidth,
           height: CustomMedia.screenHeight * .15,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: EdgeInsets.symmetric(
+                    horizontal: CustomMedia.screenWidth * .03),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Container(
+                      padding: EdgeInsets.symmetric(vertical: 5),
                       width: CustomMedia.screenWidth * .20,
-                      height: 70,
+                      height: CustomMedia.screenHeight * .10,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.asset(
@@ -63,14 +65,15 @@ class _CheckOutCardState extends State<CheckOutCard> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: EdgeInsets.all(CustomMedia.screenHeight * .01),
                       width: CustomMedia.screenWidth * .65,
-                      height: 70,
+                      height: CustomMedia.screenHeight * .10,
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           Expanded(
+                            flex: 2,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,14 +87,17 @@ class _CheckOutCardState extends State<CheckOutCard> {
                                     maxLines: 2,
                                   ),
                                 ),
-                                Text(
-                                  '${widget.item.price}',
-                                  style: Theme.of(context).textTheme.subhead,
+                                Expanded(
+                                  child: Text(
+                                    '${widget.item.price}',
+                                    style: Theme.of(context).textTheme.subhead,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           Expanded(
+                            flex: 1,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -121,7 +127,10 @@ class _CheckOutCardState extends State<CheckOutCard> {
                 ),
               ),
               Container(
-                height: 30,
+                // height: CustomMedia.screenHeight * .01,
+
+                height: CustomMedia.screenHeight * .038,
+                // height: 30,
                 child: Stack(
                   children: <Widget>[
                     IncrementalButton(item: widget.item),
@@ -139,7 +148,10 @@ class _CheckOutCardState extends State<CheckOutCard> {
                             padding: EdgeInsets.only(bottom: 2),
                             color: Colors.white,
                             onPressed: deleteItem,
-                            icon: Icon(Icons.delete),
+                            icon: Icon(
+                              Icons.delete,
+                              size: 20,
+                            ),
                           ),
                         ),
                       ),

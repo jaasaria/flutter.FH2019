@@ -65,7 +65,7 @@ class _FacialOrderState extends State<FacialOrder>
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Container(
-              height: CustomMedia.screenHeight * .10,
+              //   height: CustomMedia.screenHeight * .10,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
@@ -74,7 +74,9 @@ class _FacialOrderState extends State<FacialOrder>
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: Container(
+                      //   height: CustomMedia.screenHeight * .08,
                       padding: EdgeInsets.all(10),
+                      //   padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey[300]),
                           borderRadius: BorderRadius.circular(5.0)),

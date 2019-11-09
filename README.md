@@ -33,7 +33,6 @@ Shoutout to this guy for helping me finish our project. Thank you so much bro!
 
 
 #### Todo: More Samples
-- [ ] Facial Recognition (Fixing)
 - [ ] More Menu Items 
 - [ ] More Animation 
     - Listview

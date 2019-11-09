@@ -57,8 +57,11 @@ class _HomeState extends State<Home>
         bottomNavigationBar: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            SizedBox(
+              height: 5,
+            ),
             Container(
-              height: CustomMedia.screenHeight * .17,
+              //   height: CustomMedia.screenHeight * .18,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,

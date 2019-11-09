@@ -43,8 +43,9 @@ class _FacialItemCardState extends State<FacialItemCard> {
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Container(
+                      padding: EdgeInsets.symmetric(vertical: 8),
                       width: CustomMedia.screenWidth * .20,
-                      height: 70,
+                      height: CustomMedia.screenHeight * .10,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.asset(

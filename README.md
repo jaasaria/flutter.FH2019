@@ -12,6 +12,10 @@ Nowadays, big companies like McDonalds and Jollibee have their own Ordering Kios
 
 Inspired by these successful food chains, we created this app to help local food businesses like "Karendirya" to experience and have their menus and orders right on their customer palm.
 
+When customer don't know what food category of food to choose, AI can suggest list of items according to customer's emotion or facial expression.
+
+This app uses the ML kit for detecting faces and classify the smile probability. With this, the system can suggest the list of items for the particular customer's emotion.
+
  
 #### Project Partner
 Team: Dart Comrade

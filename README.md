@@ -6,11 +6,13 @@
 
 ## Food Ordering in a Fun Way (w/ Facial Recognition)
 
-My first open source project made in FLUTTER.  📱🚀💖
+<!-- My first open source project made in FLUTTER.  📱🚀💖 <br> -->
+
+Nowadays, big companies like McDonalds and Jollibee have their own Ordering Kiosk to help them get customer orders in a smooth and convenient way. 
+
+Inspired by these successful food chains we created this app to help local food businesses like "Karendirya"  to experience and have their menus and orders right on their customer palm.
  
 #### Project Partner
-
-
 Name: [Adrian Evangelista](https://github.com/adriane-macer) <br>
 Github: [Link](https://github.com/adriane-macer/intelligent_ordering_system_app) <br>
 Module: Facial Recognition (FB ML Vision) <br>
@@ -19,9 +21,10 @@ Shoutout to this guy for helping me finish our project. Thank you so much bro!
 
 
 
+<br>
 
-If happen you 💖 my project please dont forget to give me a ⭐. Show your love and give me more motivation to create more open source project. 🤝
 
+**If happen you 💖 our project please dont forget to give us a ⭐. Show your love and give us more motivation to create more open source project. 🤝**
 
 #### Links
 - Google Playstore: 

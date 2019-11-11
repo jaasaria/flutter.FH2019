@@ -22,6 +22,7 @@ class _HomeState extends State<Home>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin<Home> {
   @override
   bool get wantKeepAlive => true;
+  int rowIndex = 0;
 
   @override
   void initState() {

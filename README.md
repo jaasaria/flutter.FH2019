@@ -4,7 +4,7 @@
 
 # Flutter Philippines Hackathon 2019 🐱‍💻
 
-## Food Ordering in a Fun Way (w/ Facial Recognition)
+## Dart Comrade Flutter - Food Ordering in a Fun Way (w/ Facial Recognition)
 
 <!-- My first open source project made in FLUTTER.  📱🚀💖 <br> -->
 
@@ -33,11 +33,10 @@ Shoutout to this guy for helping me finish our project. Thank you so much bro!
 **If happen you 💖 our project please dont forget to give us a ⭐. Show your love and give us more motivation to create more open source project. 🤝**
 
 #### Links
-- Google Playstore: 
+- Google Playstore: [Dart Comrade Flutter](https://play.google.com/store/apps/details?id=com.jaasaria.fh2019) 
 
 
 #### Todo: More Samples
-- [ ] More Menu Items 
 - [ ] More Animation 
     - Listview
     - Button

@@ -1,3 +1,4 @@
+import 'package:animator/animator.dart';
 import 'package:fh2019/core/config/routes.dart';
 import 'package:fh2019/core/models/category.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
@@ -23,10 +24,21 @@ class _HomeState extends State<Home>
   @override
   bool get wantKeepAlive => true;
   int rowIndex = 0;
+  AnimationController _controllerList;
 
   @override
   void initState() {
     super.initState();
+    _controllerList = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controllerList.dispose();
   }
 
   @override
@@ -39,19 +51,54 @@ class _HomeState extends State<Home>
     return Scaffold(
         body: Column(
           children: <Widget>[
-            CarouselBanner(),
+            Animator(
+              tweenMap: {
+                "opacity": Tween<double>(begin: 0, end: 1),
+                "scale": Tween<double>(begin: 0, end: 1),
+                "translation":
+                    Tween<Offset>(begin: Offset(0, .5), end: Offset.zero),
+              },
+              duration: Duration(milliseconds: 3000),
+              curve: Interval(0, .6, curve: Curves.fastLinearToSlowEaseIn),
+              builderMap: (Map<String, Animation> anim) => FadeTransition(
+                opacity: anim["opacity"],
+                child: FractionalTranslation(
+                  translation: anim["translation"].value,
+                  child: ScaleTransition(
+                      scale: anim["scale"], child: CarouselBanner()),
+                ),
+              ),
+            ),
             Expanded(
               child: GridView.count(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8).copyWith(top: 20),
-                crossAxisSpacing: 10,
-                crossAxisCount: 2,
-                children: itemViewModel.getFilterItems.map((index) {
-                  return ItemCard(
-                    item: index,
-                  );
-                }).toList(),
-              ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8)
+                      .copyWith(top: 20),
+                  crossAxisSpacing: 10,
+                  crossAxisCount: 2,
+                  children: List.generate(itemViewModel.getFilterItems.length,
+                      (index) {
+                    return AnimatedBuilder(
+                        animation: _controllerList,
+                        builder: (BuildContext context, Widget child) {
+                          var count = Category.listCategory.length;
+                          var animation = Tween(begin: 0.0, end: 1.0).animate(
+                            CurvedAnimation(
+                              parent: _controllerList,
+                              curve: Interval(.3 + (1 / count) * index, 1.0,
+                                  curve: Curves.fastOutSlowIn),
+                            ),
+                          );
+                          _controllerList.forward();
+                          return FadeTransition(
+                              opacity: animation,
+                              child: new Transform(
+                                  transform: new Matrix4.translationValues(
+                                      0.0, 50 * (1.0 - animation.value), 0.0),
+                                  child: ItemCard(
+                                    item: itemViewModel.getFilterItems[index],
+                                  )));
+                        });
+                  })),
             ),
           ],
         ),
@@ -62,7 +109,6 @@ class _HomeState extends State<Home>
               height: 5,
             ),
             Container(
-              //   height: CustomMedia.screenHeight * .18,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
@@ -71,6 +117,7 @@ class _HomeState extends State<Home>
                   Container(
                       height: CustomMedia.screenHeight * .06,
                       child: ListView.builder(
+                        physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         itemCount: Category.listCategory.length,
                         itemBuilder: (BuildContext context, int index) {
@@ -85,40 +132,77 @@ class _HomeState extends State<Home>
                                 func: () =>
                                     setCategory(Category.listCategory[index])),
                           );
+
+                          //   AnimatedBuilder(
+                          //       animation: _controllerList,
+                          //       builder: (BuildContext context, Widget child) {
+                          //         var count = Category.listCategory.length;
+                          //         var animation =
+                          //             Tween(begin: 0.0, end: 1.0).animate(
+                          //           CurvedAnimation(
+                          //             parent: _controllerList,
+                          //             curve: Interval((1 / count) * index, 1.0,
+                          //                 curve: Curves.fastOutSlowIn),
+                          //           ),
+                          //         );
+                          //         _controllerList.forward();
+                          //         return FadeTransition(
+                          //             opacity: animation,
+                          //             child: new Transform(
+                          //               transform: new Matrix4.translationValues(
+                          //                   100 * (1.0 - animation.value),
+                          //                   0.0,
+                          //                   0.0),
+                          //               child:,
+                          //             ));
+                          //       });
                         },
                       )),
                   new FooterSummary(itemViewModel: itemViewModel)
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.all(5),
-              color: Colors.grey[200],
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Expanded(
-                    child: new FooterButton(
-                      title: "Back",
-                      color: CustomColors.red,
-                      func: cancelOrder,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: new FooterButton(
-                      color: CustomColors.blue,
-                      title: "View Order",
-                      func: () => viewOrder(),
-                    ),
-                  ),
-                ],
-              ),
-            )
+            Animator(
+                tweenMap: {
+                  "opacity": Tween<double>(begin: 0, end: 1),
+                  "translation":
+                      Tween<Offset>(begin: Offset(0, -.5), end: Offset.zero),
+                },
+                cycles: 1,
+                duration: Duration(milliseconds: 3000),
+                curve: Interval(0, .6, curve: Curves.fastOutSlowIn),
+                builderMap: (Map<String, Animation> anim) => FadeTransition(
+                    opacity: anim["opacity"],
+                    child: FractionalTranslation(
+                        translation: anim["translation"].value,
+                        child: Container(
+                          padding: EdgeInsets.all(5),
+                          color: Colors.grey[200],
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Expanded(
+                                child: new FooterButton(
+                                  title: "Back",
+                                  color: CustomColors.red,
+                                  func: cancelOrder,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: new FooterButton(
+                                  color: CustomColors.blue,
+                                  title: "View Order",
+                                  func: () => viewOrder(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )))),
           ],
         ));
   }

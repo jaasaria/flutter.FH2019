@@ -37,6 +37,7 @@ Shoutout to this guy for helping me finish our project. Thank you so much bro!
 
 
 #### Todo: More Samples
+- [ ] Refactor Code 
 - [ ] More Animation 
     - Listview
     - Button

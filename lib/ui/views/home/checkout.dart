@@ -1,3 +1,4 @@
+import 'package:animator/animator.dart';
 import 'package:fh2019/core/config/routes.dart';
 import 'package:fh2019/core/models/category.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
@@ -21,18 +22,28 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut>
-    with AutomaticKeepAliveClientMixin<CheckOut> {
+    with
+        SingleTickerProviderStateMixin,
+        AutomaticKeepAliveClientMixin<CheckOut> {
   @override
   bool get wantKeepAlive => true;
 
   ProgressDialog pr;
+  AnimationController _controllerList;
 
   @override
   void initState() {
     super.initState();
-    if (mounted) {
-      // getCheckOutItems
-    }
+    _controllerList = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controllerList.dispose();
   }
 
   @override
@@ -44,14 +55,49 @@ class _CheckOutState extends State<CheckOut>
     return Scaffold(
         body: Column(
           children: <Widget>[
-            new CarouselBanner(),
+            Animator(
+              tweenMap: {
+                "opacity": Tween<double>(begin: 0, end: 1),
+                "scale": Tween<double>(begin: 0, end: 1),
+                "translation":
+                    Tween<Offset>(begin: Offset(0, .5), end: Offset.zero),
+              },
+              duration: Duration(milliseconds: 3000),
+              curve: Interval(0, .6, curve: Curves.fastLinearToSlowEaseIn),
+              builderMap: (Map<String, Animation> anim) => FadeTransition(
+                opacity: anim["opacity"],
+                child: FractionalTranslation(
+                  translation: anim["translation"].value,
+                  child: ScaleTransition(
+                      scale: anim["scale"], child: CarouselBanner()),
+                ),
+              ),
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: itemViewModel.getCheckOutItems.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return CheckOutCard(
-                    item: itemViewModel.getCheckOutItems[index],
-                  );
+                  return AnimatedBuilder(
+                      animation: _controllerList,
+                      builder: (BuildContext context, Widget child) {
+                        var count = Category.listCategory.length;
+                        var animation = Tween(begin: 0.0, end: 1.0).animate(
+                          CurvedAnimation(
+                            parent: _controllerList,
+                            curve: Interval(.3 + (1 / count) * index, 1.0,
+                                curve: Curves.fastOutSlowIn),
+                          ),
+                        );
+                        _controllerList.forward();
+                        return FadeTransition(
+                            opacity: animation,
+                            child: new Transform(
+                                transform: new Matrix4.translationValues(
+                                    0.0, 50 * (1.0 - animation.value), 0.0),
+                                child: CheckOutCard(
+                                  item: itemViewModel.getCheckOutItems[index],
+                                )));
+                      });
                 },
               ),
             )
@@ -61,36 +107,50 @@ class _CheckOutState extends State<CheckOut>
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             FooterSummary(itemViewModel: itemViewModel),
-            Container(
-              padding: EdgeInsets.all(5),
-              color: Colors.grey[200],
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Expanded(
-                    child: new FooterButton(
-                      title: "Cancel",
-                      color: CustomColors.red,
-                      func: calcelCheckOut,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: new FooterButton(
-                      color: CustomColors.blue,
-                      title: "Proceed to Checkout",
-                      func: itemViewModel.getCheckOutItems.length >= 1
-                          ? () => proceedCheckOut()
-                          : null,
-                    ),
-                  )
-                ],
-              ),
-            )
+            Animator(
+                tweenMap: {
+                  "opacity": Tween<double>(begin: 0, end: 1),
+                  "translation":
+                      Tween<Offset>(begin: Offset(0, -.5), end: Offset.zero),
+                },
+                cycles: 1,
+                duration: Duration(milliseconds: 3000),
+                curve: Interval(0, .6, curve: Curves.fastOutSlowIn),
+                builderMap: (Map<String, Animation> anim) => FadeTransition(
+                    opacity: anim["opacity"],
+                    child: FractionalTranslation(
+                        translation: anim["translation"].value,
+                        child: Container(
+                          padding: EdgeInsets.all(5),
+                          color: Colors.grey[200],
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Expanded(
+                                child: new FooterButton(
+                                  title: "Cancel",
+                                  color: CustomColors.red,
+                                  func: calcelCheckOut,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: new FooterButton(
+                                  color: CustomColors.blue,
+                                  title: "Proceed to Checkout",
+                                  func:
+                                      itemViewModel.getCheckOutItems.length >= 1
+                                          ? () => proceedCheckOut()
+                                          : null,
+                                ),
+                              )
+                            ],
+                          ),
+                        )))),
           ],
         ));
   }

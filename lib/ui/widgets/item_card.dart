@@ -1,3 +1,4 @@
+import 'package:animator/animator.dart';
 import 'package:fh2019/core/models/item.dart';
 import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
@@ -20,7 +21,6 @@ class ItemCard extends StatefulWidget {
 class _ItemCardState extends State<ItemCard>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
-//   bool animateCheckBool = true;
 
   @override
   void initState() {
@@ -77,28 +77,50 @@ class _ItemCardState extends State<ItemCard>
                       )),
                 ),
                 widget.item.addCart
-                    ? Container(
-                        height: CustomMedia.screenHeight * .15,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            color: Color.fromRGBO(38, 38, 38, 0.6),
-                            // borderRadius: BorderRadius.circular(50.0)),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(50),
-                            )),
-                        child: AnimatedBuilder(
-                          animation: rotateAnimation,
-                          child: Icon(
-                            Icons.check,
-                            size: 50,
-                            color: Colors.white,
+                    ? Animator(
+                        tweenMap: {
+                          "opacity": Tween<double>(begin: 0, end: 1),
+                          "scale": Tween<double>(begin: 0, end: 1),
+                          "translation": Tween<Offset>(
+                              begin: Offset(0, .5), end: Offset.zero),
+                        },
+                        duration: Duration(milliseconds: 700),
+                        curve: Interval(0, 1,
+                            curve: Curves.fastLinearToSlowEaseIn),
+                        builderMap: (
+                          Map<String, Animation> anim,
+                        ) =>
+                            FadeTransition(
+                          opacity: anim["opacity"],
+                          child: FractionalTranslation(
+                            translation: anim["translation"].value,
+                            child: ScaleTransition(
+                                scale: anim["scale"],
+                                child: Container(
+                                    height: CustomMedia.screenHeight * .15,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                        color: Color.fromRGBO(38, 38, 38, 0.6),
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10),
+                                          topRight: Radius.circular(50),
+                                        )),
+                                    child: AnimatedBuilder(
+                                      animation: rotateAnimation,
+                                      child: Icon(
+                                        Icons.check,
+                                        size: 50,
+                                        color: Colors.white,
+                                      ),
+                                      builder: (context, child) {
+                                        return Transform.rotate(
+                                            angle: rotateAnimation.value,
+                                            child: child);
+                                      },
+                                    ))),
                           ),
-                          builder: (context, child) {
-                            return Transform.rotate(
-                                angle: rotateAnimation.value, child: child);
-                          },
-                        ))
+                        ),
+                      )
                     : Container(),
                 Positioned(
                     top: 5.0,

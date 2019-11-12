@@ -36,7 +36,7 @@ class _StartState extends State<Start>
                         Tween<Offset>(begin: Offset(0, .5), end: Offset.zero),
                   },
                   duration: Duration(milliseconds: 3000),
-                  curve: Interval(0, .6, curve: Curves.fastLinearToSlowEaseIn),
+                  curve: Interval(0, .5, curve: Curves.fastLinearToSlowEaseIn),
                   builderMap: (Map<String, Animation> anim) => FadeTransition(
                     opacity: anim["opacity"],
                     child: FractionalTranslation(
@@ -59,11 +59,10 @@ class _StartState extends State<Start>
                             "opacity": Tween<double>(begin: 0, end: 1),
                             "scale": Tween<double>(begin: 0, end: 1),
                             "translation": Tween<Offset>(
-                                begin: Offset(0, -.3), end: Offset.zero),
+                                begin: Offset(0, -.1), end: Offset.zero),
                           },
                           duration: Duration(milliseconds: 3000),
-                          curve:
-                              Interval(0.4, 0.8, curve: Curves.fastOutSlowIn),
+                          curve: Interval(0.3, 0.8, curve: Curves.easeOutSine),
                           builderMap: (Map<String, Animation> anim) =>
                               FadeTransition(
                             opacity: anim["opacity"],
@@ -95,7 +94,7 @@ class _StartState extends State<Start>
                                 begin: Offset(0, .10), end: Offset.zero),
                           },
                           duration: Duration(milliseconds: 3000),
-                          curve: Interval(0.4, 0.8, curve: Curves.easeOutSine),
+                          curve: Interval(0.3, 0.8, curve: Curves.easeOutSine),
                           builderMap: (Map<String, Animation> anim) =>
                               FadeTransition(
                             opacity: anim["opacity"],
@@ -130,7 +129,7 @@ class _StartState extends State<Start>
                             "scale": Tween<double>(begin: 0, end: 1),
                           },
                           duration: Duration(milliseconds: 3000),
-                          curve: Interval(0.6, 1, curve: Curves.easeInOutBack),
+                          curve: Interval(0.5, 1, curve: Curves.easeInOutBack),
                           builderMap: (Map<String, Animation> anim) =>
                               FadeTransition(
                             opacity: anim["opacity"],
@@ -160,7 +159,7 @@ class _StartState extends State<Start>
                                 begin: Offset(0, .5), end: Offset.zero),
                           },
                           duration: Duration(milliseconds: 3000),
-                          curve: Interval(0.5, 0.8, curve: buttonCurves),
+                          curve: Interval(0.4, 0.8, curve: buttonCurves),
                           builderMap: (Map<String, Animation> anim) =>
                               FadeTransition(
                             opacity: anim["opacity"],
@@ -189,7 +188,7 @@ class _StartState extends State<Start>
                                 begin: Offset(0, .5), end: Offset.zero),
                           },
                           duration: Duration(milliseconds: 3000),
-                          curve: Interval(0.55, 0.8, curve: buttonCurves),
+                          curve: Interval(0.45, 0.8, curve: buttonCurves),
                           builderMap: (Map<String, Animation> anim) =>
                               FadeTransition(
                             opacity: anim["opacity"],
@@ -222,7 +221,7 @@ class _StartState extends State<Start>
                                 begin: Offset(0, .5), end: Offset.zero),
                           },
                           duration: Duration(milliseconds: 3000),
-                          curve: Interval(0.6, 0.8, curve: buttonCurves),
+                          curve: Interval(0.5, 0.8, curve: buttonCurves),
                           builderMap: (Map<String, Animation> anim) =>
                               FadeTransition(
                             opacity: anim["opacity"],
@@ -263,7 +262,7 @@ class _StartState extends State<Start>
               },
               cycles: 1,
               duration: Duration(milliseconds: 3000),
-              curve: Interval(0, .6, curve: Curves.fastOutSlowIn),
+              curve: Interval(0, .5, curve: Curves.fastOutSlowIn),
               builderMap: (Map<String, Animation> anim) => FadeTransition(
                 opacity: anim["opacity"],
                 child: FractionalTranslation(

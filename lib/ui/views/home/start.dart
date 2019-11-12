@@ -280,7 +280,7 @@ class _StartState extends State<Start>
                                     begin: Offset(0, .5), end: Offset.zero),
                               },
                               duration: Duration(seconds: 4),
-                              curve: Interval(0.7, 1, curve: buttonCurves),
+                              curve: Interval(0.8, 1, curve: buttonCurves),
                               builderMap: (Map<String, Animation> anim) =>
                                   FadeTransition(
                                 opacity: anim["opacity"],

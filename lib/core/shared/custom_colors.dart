@@ -13,6 +13,7 @@ class CustomColors {
   static final Color green = ColorHex("#518239");
   static final Color blue = ColorHex("#1441a6");
   static final Color lightblue = ColorHex("#2a8fe4");
+  static final Color bluelogo = ColorHex("#04599c");
   static final Color yellow = ColorHex("#F8BA3E");
 //   static final Color yellow = ColorHex("#fdd216");
 }

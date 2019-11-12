@@ -36,6 +36,7 @@ dependencies:
   firebase_ml_vision: ^0.9.3
   image_picker: ^0.6.1+10
   flare_flutter: ^1.7.1
+  animator: ^1.0.0+1
 
 dev_dependencies:
   # https://medium.com/@psyanite/how-to-add-app-launcher-icons-in-flutter-bd92b0e0873a

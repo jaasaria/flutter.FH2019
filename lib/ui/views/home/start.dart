@@ -3,6 +3,7 @@ import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
 import 'package:fh2019/ui/widgets/carousel_banner.dart';
 import 'package:fh2019/ui/widgets/start_button.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animator/animator.dart';
@@ -75,11 +76,11 @@ class _StartState extends State<Start>
                                     top: CustomMedia.screenHeight * .1,
                                   ),
                                   child: Container(
-                                    height: CustomMedia.screenHeight * .10,
-                                    child: Image.asset(
-                                      "assets/images/logos/logo.png",
-                                      fit: BoxFit.cover,
-                                    ),
+                                    height: CustomMedia.screenHeight * .15,
+                                    child: FlareActor("assets/flare/animated_logo.flr",
+                                        alignment: Alignment.center,
+                                        fit: BoxFit.contain,
+                                        animation: "animate"),
                                   ),
                                 ),
                               ),

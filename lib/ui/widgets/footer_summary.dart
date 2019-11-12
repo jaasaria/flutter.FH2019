@@ -15,15 +15,7 @@ class FooterSummary extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Container(
-        // height: CustomMedia.screenHeight * .08,
-        // height: 230,
-
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        // padding: EdgeInsets.all(CustomMedia.screenHeight * .01),
-        // padding: EdgeInsets.all(10),
-
-        // height: CustomMedia.screenHeight * .08,
-        // padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
             border: Border.all(color: Colors.grey[300]),
             borderRadius: BorderRadius.circular(5.0)),

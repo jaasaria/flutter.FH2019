@@ -131,7 +131,10 @@ class _FacialPictureState extends State<FacialPicture>
                     padding: EdgeInsets.all(15),
                     shape: CircleBorder(),
                     color: CustomColors.green,
-                    onPressed: () => _getImageAndDetectFaces(isCamera: false),
+                    disabledColor: Colors.grey,
+                    onPressed: !isLoading
+                        ? () => _getImageAndDetectFaces(isCamera: false)
+                        : null,
                     elevation: 2,
                     child: Icon(
                       Icons.image,
@@ -146,7 +149,10 @@ class _FacialPictureState extends State<FacialPicture>
                     padding: EdgeInsets.all(15),
                     shape: CircleBorder(),
                     color: CustomColors.green,
-                    onPressed: () => _getImageAndDetectFaces(isCamera: true),
+                    disabledColor: Colors.grey,
+                    onPressed: !isLoading
+                        ? () => _getImageAndDetectFaces(isCamera: true)
+                        : null,
                     elevation: 2,
                     child: Icon(
                       Icons.camera,

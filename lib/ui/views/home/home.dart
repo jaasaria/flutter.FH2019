@@ -51,24 +51,7 @@ class _HomeState extends State<Home>
     return Scaffold(
         body: Column(
           children: <Widget>[
-            Animator(
-              tweenMap: {
-                "opacity": Tween<double>(begin: 0, end: 1),
-                "scale": Tween<double>(begin: 0, end: 1),
-                "translation":
-                    Tween<Offset>(begin: Offset(0, .5), end: Offset.zero),
-              },
-              duration: Duration(milliseconds: 3000),
-              curve: Interval(0, .6, curve: Curves.fastLinearToSlowEaseIn),
-              builderMap: (Map<String, Animation> anim) => FadeTransition(
-                opacity: anim["opacity"],
-                child: FractionalTranslation(
-                  translation: anim["translation"].value,
-                  child: ScaleTransition(
-                      scale: anim["scale"], child: CarouselBanner()),
-                ),
-              ),
-            ),
+            CarouselBanner(),
             Expanded(
               child: GridView.count(
                   padding: const EdgeInsets.symmetric(horizontal: 8)

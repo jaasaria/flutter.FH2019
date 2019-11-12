@@ -33,9 +33,9 @@ class _CheckOutCardState extends State<CheckOutCard> {
     final ItemViewModel itemViewModel = Provider.of<ItemViewModel>(context);
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 3, left: 8, right: 8),
+      padding: const EdgeInsets.only(bottom: 5, left: 8, right: 8),
       child: Card(
-        elevation: 3,
+        elevation: 2,
         child: Container(
           width: CustomMedia.screenWidth,
           height: CustomMedia.screenHeight * .15,

@@ -3,7 +3,6 @@ import 'package:fh2019/core/shared/custom_colors.dart';
 import 'package:fh2019/core/shared/custom_media.dart';
 import 'package:fh2019/ui/widgets/carousel_banner.dart';
 import 'package:fh2019/ui/widgets/start_button.dart';
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animator/animator.dart';
@@ -29,24 +28,7 @@ class _StartState extends State<Start>
           children: <Widget>[
             Column(
               children: <Widget>[
-                Animator(
-                  tweenMap: {
-                    "opacity": Tween<double>(begin: 0, end: 1),
-                    "scale": Tween<double>(begin: 0, end: 1),
-                    "translation":
-                        Tween<Offset>(begin: Offset(0, .5), end: Offset.zero),
-                  },
-                  duration: Duration(milliseconds: 3000),
-                  curve: Interval(0, .5, curve: Curves.fastLinearToSlowEaseIn),
-                  builderMap: (Map<String, Animation> anim) => FadeTransition(
-                    opacity: anim["opacity"],
-                    child: FractionalTranslation(
-                      translation: anim["translation"].value,
-                      child: ScaleTransition(
-                          scale: anim["scale"], child: CarouselBanner()),
-                    ),
-                  ),
-                ),
+                CarouselBanner(),
                 Expanded(
                     child: SingleChildScrollView(
                   child: Container(
@@ -76,11 +58,15 @@ class _StartState extends State<Start>
                                     top: CustomMedia.screenHeight * .1,
                                   ),
                                   child: Container(
-                                    height: CustomMedia.screenHeight * .15,
-                                    child: FlareActor("assets/flare/animated_logo.flr",
-                                        alignment: Alignment.center,
-                                        fit: BoxFit.contain,
-                                        animation: "animate"),
+                                    height: CustomMedia.screenHeight * .10,
+                                    child: Image.asset(
+                                      "assets/images/logos/logo.png",
+                                      fit: BoxFit.cover,
+                                    ),
+                                    // FlareActor("assets/flare/animated_logo.flr",
+                                    //     alignment: Alignment.center,
+                                    //     fit: BoxFit.contain,
+                                    //     animation: "animate"),
                                   ),
                                 ),
                               ),

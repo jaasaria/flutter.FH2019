@@ -38,10 +38,7 @@ Shoutout to this guy for helping me finish our project. Thank you so much bro!
 
 #### Todo: More Samples
 - [ ] Refactor Code 
-- [ ] More Animation 
-    - Listview
-    - Button
-    - Images
+
 
 #### Event Info
 <kbd><img src="https://github.com/jaasaria/flutter.FH2019/blob/master/sreenshots/banner.jpg?raw=true"> </kbd>

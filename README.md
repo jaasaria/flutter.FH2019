@@ -36,7 +36,7 @@ Shoutout to this guy for helping me finish our project. Thank you so much bro!
 - Google Playstore: [Dart Comrade Flutter](https://play.google.com/store/apps/details?id=com.jaasaria.fh2019) 
 
 
-#### Todo: More Samples
+#### Todo: 
 - [ ] Refactor Code 
 
 
@@ -44,8 +44,9 @@ Shoutout to this guy for helping me finish our project. Thank you so much bro!
 <kbd><img src="https://github.com/jaasaria/flutter.FH2019/blob/master/sreenshots/banner.jpg?raw=true"> </kbd>
 
 #### Screenshot
-<kbd><img src="https://github.com/jaasaria/flutter.FH2019/blob/master/sreenshots/home.jpg?raw=true" width="250" height="500"> </kbd>
 <kbd><img src="https://github.com/jaasaria/flutter.FH2019/blob/master/sreenshots/gif.gif?raw=true" width="250" height="500"> </kbd>
+<kbd><img src="https://github.com/jaasaria/flutter.FH2019/blob/master/sreenshots/face_detection.gif?raw=true" width="250" height="500"> </kbd>
+<kbd><img src="https://github.com/jaasaria/flutter.FH2019/blob/master/sreenshots/menu_randomizer.gif?raw=true" width="250" height="500"> </kbd>
 
 
 

@@ -1,13 +1,6 @@
 name: fh2019
 description: A new Flutter project.
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# flutter build appbundle --target-platform=android-arm64
-# run flutter build apk --release --target-platform=android-arm64
 version: 1.0.2+2
 
 environment:
